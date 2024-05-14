@@ -2,14 +2,12 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import model.Ferramenta;
 
 public class BaseDAO {
     /**
-     * Esse método é utilizado para
-     * 
+     * Esse método é utilizado para conectar com o banco de dados
+     * @return connection;
      */
     public Connection getConexao() {
         Connection connection = null;
@@ -18,7 +16,7 @@ public class BaseDAO {
             Class.forName(driver);
 
             String server = "localhost";
-            String database = "";//colocar db
+            String database = "bd_emprestimo";//colocar db
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
             String password = "Unisul@1520";
@@ -39,23 +37,4 @@ public class BaseDAO {
             return null;
         }
     }
-
-    public boolean insertAlunoBD(Ferramenta objeto) {
-        String sql = "INSERT INTO alunos_tb(idFerramenta,nome,marca,custo) VALUES(?,?,?,?)";
-        try {
-            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
-            stmt.setInt(1, objeto.getIdFerramenta());
-            stmt.setString(2, objeto.getNome());
-            stmt.setString(3, objeto.getMarca());
-            stmt.setDouble(4, objeto.getCusto());
-            stmt.execute();
-            stmt.close();
-
-            return true;
-        } catch (SQLException erro) {
-            System.out.println("Erro: " + erro);
-            throw new RuntimeException(erro);
-        }
-    }
-
 }
