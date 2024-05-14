@@ -35,8 +35,8 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `a3emprestimo`.`tb_ferramenta` (
   `id_ferramenta` INT NOT NULL,
   `nome` VARCHAR(45) NOT NULL,
-  `marca` VARCHAR(45) NULL,
-  `custo` FLOAT NULL,
+  `marca` VARCHAR(45) NOT NULL,
+  `custo` FLOAT NOT NULL,
   PRIMARY KEY (`id_ferramenta`))
 ENGINE = InnoDB;
 
