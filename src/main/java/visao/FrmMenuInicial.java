@@ -49,6 +49,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JmCadastrarFerramenta.add(JmCadastrarAmigo);
 
         JmCadastrarEmprestimo.setText("Cadastrar Emprestimo");
+        JmCadastrarEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmCadastrarEmprestimoActionPerformed(evt);
+            }
+        });
         JmCadastrarFerramenta.add(JmCadastrarEmprestimo);
 
         jMenuBar1.add(JmCadastrarFerramenta);
@@ -76,6 +81,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         FrmCadastroFerramenta janela = new FrmCadastroFerramenta();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMFerramentaActionPerformed
+
+    private void JmCadastrarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCadastrarEmprestimoActionPerformed
+       FrmCadastroEmprestimo janela = new FrmCadastroEmprestimo();
+        janela.setVisible(rootPaneCheckingEnabled); 
+    }//GEN-LAST:event_JmCadastrarEmprestimoActionPerformed
 
     /**
      * @param args the command line arguments
