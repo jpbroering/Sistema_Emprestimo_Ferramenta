@@ -18,7 +18,7 @@ public class BaseDAO {
             Class.forName(driver);
 
             String server = "localhost";
-            String database = "alunos_bd";
+            String database = "";//colocar db
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
             String password = "Unisul@1520";
