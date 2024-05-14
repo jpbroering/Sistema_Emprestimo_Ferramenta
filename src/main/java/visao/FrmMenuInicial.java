@@ -27,31 +27,31 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
+        JmCadastrarFerramenta = new javax.swing.JMenu();
+        JMFerramenta = new javax.swing.JMenuItem();
+        JmCadastrarAmigo = new javax.swing.JMenuItem();
+        JmCadastrarEmprestimo = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jMenu1.setText("Arquivos");
+        JmCadastrarFerramenta.setText("Arquivos");
 
-        jMenuItem1.setText("Cadastrar Ferramenta");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        JMFerramenta.setText("Cadastrar Ferramenta");
+        JMFerramenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                JMFerramentaActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        JmCadastrarFerramenta.add(JMFerramenta);
 
-        jMenuItem2.setText("Cadastrar Amigo");
-        jMenu1.add(jMenuItem2);
+        JmCadastrarAmigo.setText("Cadastrar Amigo");
+        JmCadastrarFerramenta.add(JmCadastrarAmigo);
 
-        jMenuItem3.setText("Cadastrar Emprestimo");
-        jMenu1.add(jMenuItem3);
+        JmCadastrarEmprestimo.setText("Cadastrar Emprestimo");
+        JmCadastrarFerramenta.add(JmCadastrarEmprestimo);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(JmCadastrarFerramenta);
 
         jMenu2.setText("Edit");
         jMenuBar1.add(jMenu2);
@@ -72,9 +72,10 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void JMFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMFerramentaActionPerformed
+        FrmCadastroFerramenta janela = new FrmCadastroFerramenta();
+        janela.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_JMFerramentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -112,11 +113,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem JMFerramenta;
+    private javax.swing.JMenuItem JmCadastrarAmigo;
+    private javax.swing.JMenuItem JmCadastrarEmprestimo;
+    private javax.swing.JMenu JmCadastrarFerramenta;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
     // End of variables declaration//GEN-END:variables
 }
