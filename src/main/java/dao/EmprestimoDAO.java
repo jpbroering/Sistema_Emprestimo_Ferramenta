@@ -20,11 +20,11 @@ public class EmprestimoDAO extends BaseDAO {
 
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_emprestimo");
             while (res.next()) {
-                int id = res.getInt("id");
-                int idFerramenta = res.getInt("IdFerramneta");
-                int idAmigo = res.getInt("idAmigo");
-                String dataEmprestimo = res.getString("DataEmprestimo");
-                String dataDevolucao = res.getString("DataDevolucao");
+                int id = res.getInt("id_emprestimo");
+                int idFerramenta = res.getInt("tb_ferramenta_id_ferramenta");
+                int idAmigo = res.getInt("tb_amigo_id_amigo");
+                String dataEmprestimo = res.getString("data_emprestimo");
+                String dataDevolucao = res.getString("data_devolucao");
                 
                     Emprestimo objeto = new Emprestimo(id,idFerramenta , idAmigo, dataEmprestimo, dataDevolucao);
                 listaEmprestimo.add(objeto);
@@ -47,7 +47,7 @@ public class EmprestimoDAO extends BaseDAO {
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT MAX(id_emprestimo) id FROM tb_emprestimo");
             res.next();
-            maiorID = res.getInt("id_emprestimo");
+            maiorID = res.getInt("id");
             stmt.close();
         } catch (SQLException ex) {
             System.out.println("Erro: " + ex);
