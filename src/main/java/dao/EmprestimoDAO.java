@@ -47,7 +47,7 @@ public class EmprestimoDAO extends BaseDAO {
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT MAX(id_emprestimo) id FROM tb_emprestimo");
             res.next();
-            maiorID = res.getInt("id");
+            maiorID = res.getInt("id_emprestimo");
             stmt.close();
         } catch (SQLException ex) {
             System.out.println("Erro: " + ex);
@@ -56,7 +56,7 @@ public class EmprestimoDAO extends BaseDAO {
     }
     
     public boolean insertEmprestimoBD(Emprestimo objeto) {
-        String sql = "INSERT INTO tb_ferramenta(id_emprestimo,nome,marca,custo) VALUES(?,?,?,?,?)";
+        String sql = "INSERT INTO tb_emprestimo(id_emprestimo,tb_amigo_id_amigo,tb_ferramenta_id_ferramenta,data_emprestimo,data_devolucao) VALUES(?,?,?,?,?)";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setInt(1, objeto.getId());
