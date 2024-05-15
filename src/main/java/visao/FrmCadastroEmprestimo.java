@@ -1,18 +1,24 @@
-
 package visao;
 
 import javax.swing.JOptionPane;
 import modelo.Emprestimo;
 
+/**
+ * Classe para criar uma interface de cadastro de empréstimo.
+ */
 public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
-  private Emprestimo objetoEmprestimo;
+    private Emprestimo objetoEmprestimo;
+
+    /**
+     * Construtor padrão da classe FrmCadastroEmprestimo. Inicializa a interface
+     * gráfica e o objeto de empréstimo.
+     */
     public FrmCadastroEmprestimo() {
         initComponents();
         this.objetoEmprestimo = new Emprestimo();
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -129,52 +135,57 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
-        try{
+
+        /**
+         * Método para processar o cadastro de um novo empréstimo.
+         */
+        try {
             int idAmigo = 0;
             int idFerramenta = 0;
             String dataDiaEmp = "";
             String[] dataOrdenada = new String[3];
-            
-            
-            
-            if(this.JTFIdamigo.getText().length()<0){
+
+            // Verifica se o campo do ID do amigo foi preenchido corretamente
+            if (this.JTFIdamigo.getText().length() < 0) {
                 throw new Mensagens("O id deve ser maior que zero");
             } else {
                 idAmigo = Integer.parseInt(this.JTFIdamigo.getText());
             }
-            if(this.JTFIdferramenta.getText().length()<0){
+
+            // Verifica se o campo do ID da ferramenta foi preenchido corretamente
+            if (this.JTFIdferramenta.getText().length() < 0) {
                 throw new Mensagens("O id deve ser maior que zero");
             } else {
                 idFerramenta = Integer.parseInt(this.JTFIdferramenta.getText());
             }
-            if(this.JTFdataDiaEmp.getText().length()<0){
+
+            // Verifica se o campo da data do empréstimo foi preenchido corretamente
+            if (this.JTFdataDiaEmp.getText().length() < 0) {
                 throw new Mensagens("O dia deve ter...");
             } else {
                 dataOrdenada = this.JTFdataDiaEmp.getText().split("/");
-                dataDiaEmp = dataOrdenada[2]+"/" + dataOrdenada[1]+"/"+dataOrdenada[0];
+                dataDiaEmp = dataOrdenada[2] + "/" + dataOrdenada[1] + "/" + dataOrdenada[0];
             }
-                       
-              
-           
-               
-               
-                
-                
-                if(this.objetoEmprestimo.InsertEmprestimoBD(idFerramenta, idAmigo, dataDiaEmp)){
+
+            // Insere o empréstimo no banco de dados e exibe uma mensagem de sucesso
+            if (this.objetoEmprestimo.InsertEmprestimoBD(idFerramenta, idAmigo, dataDiaEmp)) {
                 JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrada com Sucesso!");
                 this.JTFIdamigo.setText("");
                 this.JTFIdferramenta.setText("");
                 this.JTFdataDiaEmp.setText("");
-                
-                
-       
-                
-                }
-           System.out.println(this.objetoEmprestimo.getMinhaLista().toString());
-        } catch(Mensagens erro) {
-            JOptionPane.showMessageDialog(null,erro.getMessage());
-        } catch(NumberFormatException erro2){
-            JOptionPane.showMessageDialog(null,"Imforme um número válido");
+
+            }
+
+            // Exibe a lista atualizada de empréstimos no console
+            System.out.println(this.objetoEmprestimo.getMinhaLista().toString());
+        } catch (Mensagens erro) {
+
+            // Exibe mensagens de erro personalizadas caso ocorra uma exceção do tipo Mensagens
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+
+            // Exibe uma mensagem de erro genérica caso ocorra uma exceção do tipo NumberFormatException
+            JOptionPane.showMessageDialog(null, "Imforme um número válido");
         }
     }//GEN-LAST:event_JBCadastrarActionPerformed
 
@@ -182,7 +193,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFdataDiaEmpActionPerformed
 
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCadastrar;
