@@ -17,7 +17,13 @@ public class Emprestimo {
         this(0,0,0,"","");
     }
 
-     
+     public Emprestimo(int id, int idFerramenta, int idAmigo, String dataEmprestimo) {
+        this.id = id; 
+        this.idFerramenta = idFerramenta;
+        this.idAmigo = idAmigo;
+        this.dataEmprestimo = dataEmprestimo;
+        
+    }
     
     public Emprestimo(int id, int idFerramenta, int idAmigo, String dataEmprestimo, String dataDevolucao) {
         this.id = id; 
@@ -71,10 +77,10 @@ public class Emprestimo {
         return dao.getMinhalista();
    
  }
-    public boolean InsertEmprestimoBD(int idFerramenta, int idAmigo, String dataEmprestimo, String dataDevolucao) {
+    public boolean InsertEmprestimoBD(int idFerramenta, int idAmigo, String dataEmprestimo) {
         
         int id = dao.maiorID()+1;
-        Emprestimo objeto = new Emprestimo(id,idFerramenta,idAmigo,dataEmprestimo,dataDevolucao);
+        Emprestimo objeto = new Emprestimo(id,idFerramenta,idAmigo,dataEmprestimo);
         dao.insertEmprestimoBD(objeto);
         return true;
     }
