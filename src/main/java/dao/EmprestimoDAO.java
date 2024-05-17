@@ -1,4 +1,3 @@
-
 package dao;
 
 import java.sql.PreparedStatement;
@@ -9,10 +8,18 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Emprestimo;
 
-
+/**
+ * Classe para acessar e manipular dados de empréstimos no banco de dados.
+ */
 public class EmprestimoDAO extends BaseDAO {
+
     private static ArrayList<Emprestimo> listaEmprestimo = new ArrayList<>();
 
+    /**
+     * Obtém a lista de empréstimos do banco de dados.
+     *
+     * @return A lista de empréstimos.
+     */
     public ArrayList<Emprestimo> getMinhalista() {
         listaEmprestimo.clear();
         try {
@@ -25,8 +32,8 @@ public class EmprestimoDAO extends BaseDAO {
                 int idAmigo = res.getInt("tb_amigo_id_amigo");
                 String dataEmprestimo = res.getString("data_emprestimo");
                 String dataDevolucao = res.getString("data_devolucao");
-                
-                    Emprestimo objeto = new Emprestimo(id,idFerramenta , idAmigo, dataEmprestimo, dataDevolucao);
+
+                Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao);
                 listaEmprestimo.add(objeto);
             }
             stmt.close();
@@ -36,14 +43,24 @@ public class EmprestimoDAO extends BaseDAO {
         }
         return listaEmprestimo;
     }
-    
+
+    /**
+     * Define a lista de empréstimos.
+     *
+     * @param Emprestimo Para lista de empréstimos a ser definida.
+     */
     public void setMinhalista(ArrayList<Emprestimo> Emprestimo) {
         EmprestimoDAO.listaEmprestimo = listaEmprestimo;
     }
-    
-    public int maiorID(){
+
+    /**
+     * Obtém o maior ID de empréstimo presente no banco de dados.
+     *
+     * @return O maior ID de empréstimo.
+     */
+    public int maiorID() {
         int maiorID = 0;
-        try{
+        try {
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT MAX(id_emprestimo) id FROM tb_emprestimo");
             res.next();
@@ -54,7 +71,13 @@ public class EmprestimoDAO extends BaseDAO {
         }
         return maiorID;
     }
-    
+
+    /**
+     * Insere um empréstimo no banco de dados.
+     *
+     * @param objeto Para o objeto de empréstimo a ser inserido.
+     * @return Verdadeiro se for bem-sucedido, falso caso contrário.
+     */
     public boolean insertEmprestimoBD(Emprestimo objeto) {
         String sql = "INSERT INTO tb_emprestimo(id_emprestimo,tb_amigo_id_amigo,tb_ferramenta_id_ferramenta,data_emprestimo,data_devolucao) VALUES(?,?,?,?,?)";
         try {
@@ -74,4 +97,3 @@ public class EmprestimoDAO extends BaseDAO {
         }
     }
 }
-
