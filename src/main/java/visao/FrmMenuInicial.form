@@ -42,6 +42,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JmCadastrarFerramentaActionPerformed"/>
+          </Events>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="JMFerramenta">
               <Properties>
@@ -55,6 +58,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Cadastrar Amigo"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JmCadastrarAmigoActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="JmCadastrarEmprestimo">
               <Properties>

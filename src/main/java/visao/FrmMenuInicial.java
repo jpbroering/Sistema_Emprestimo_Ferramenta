@@ -41,6 +41,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         JmCadastrarFerramenta.setText("Cadastrar");
+        JmCadastrarFerramenta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmCadastrarFerramentaActionPerformed(evt);
+            }
+        });
 
         JMFerramenta.setText("Cadastrar Ferramenta");
         JMFerramenta.addActionListener(new java.awt.event.ActionListener() {
@@ -51,6 +56,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JmCadastrarFerramenta.add(JMFerramenta);
 
         JmCadastrarAmigo.setText("Cadastrar Amigo");
+        JmCadastrarAmigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JmCadastrarAmigoActionPerformed(evt);
+            }
+        });
         JmCadastrarFerramenta.add(JmCadastrarAmigo);
 
         JmCadastrarEmprestimo.setText("Cadastrar Emprestimo");
@@ -138,6 +148,15 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     private void JMRelátorioFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMRelátorioFerramentaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JMRelátorioFerramentaActionPerformed
+
+    private void JmCadastrarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCadastrarFerramentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JmCadastrarFerramentaActionPerformed
+
+    private void JmCadastrarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCadastrarAmigoActionPerformed
+FrmCadastroAmigo janela = new FrmCadastroAmigo();
+        janela.setVisible(rootPaneCheckingEnabled);         // TODO add your handling code here:
+    }//GEN-LAST:event_JmCadastrarAmigoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMFerramenta;
