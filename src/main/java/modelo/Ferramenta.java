@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class Ferramenta extends EstruturaBase {
     private String marca;
     private float custo;
-    FerramentaDAO dao;
+    private FerramentaDAO dao;
 
     public Ferramenta() {
         this(0,"","",0);
