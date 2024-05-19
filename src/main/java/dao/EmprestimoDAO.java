@@ -1,5 +1,6 @@
 package dao;
 
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -30,8 +31,8 @@ public class EmprestimoDAO extends BaseDAO {
                 int id = res.getInt("id_emprestimo");
                 int idFerramenta = res.getInt("tb_ferramenta_id_ferramenta");
                 int idAmigo = res.getInt("tb_amigo_id_amigo");
-                String dataEmprestimo = res.getString("data_emprestimo");
-                String dataDevolucao = res.getString("data_devolucao");
+                Date dataEmprestimo = res.getDate("data_emprestimo");
+                Date dataDevolucao = res.getDate("data_devolucao");
 
                 Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao);
                 listaEmprestimo.add(objeto);
@@ -83,10 +84,10 @@ public class EmprestimoDAO extends BaseDAO {
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setInt(1, objeto.getId());
-            stmt.setInt(3, objeto.getIdAmigo());
-            stmt.setInt(2, objeto.getIdFerramenta());
-            stmt.setString(4, objeto.getDataEmprestimo());
-            stmt.setString(5, objeto.getDataDevolucao());
+            stmt.setInt(2, objeto.getIdAmigo());
+            stmt.setInt(3, objeto.getIdFerramenta());
+            stmt.setDate(4, objeto.getDataEmprestimo());
+            stmt.setDate(5, objeto.getDataDevolucao());
             stmt.execute();
             stmt.close();
 
@@ -95,5 +96,42 @@ public class EmprestimoDAO extends BaseDAO {
             System.out.println("Erro: " + erro);
             throw new RuntimeException(erro);
         }
+    }
+    
+    public boolean verificaFerramenta (int idFerramenta) {
+        String sql = "SELECT * FROM tb_emprestimo WHERE tb_ferramenta_id_ferramenta = ? and data_devolucao is null";
+        try{
+            System.out.println(idFerramenta);
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            stmt.setInt(1, idFerramenta);
+            try(ResultSet res = stmt.executeQuery()){
+                if(res.next()){
+                    stmt.close();
+                    return false;
+                } else {
+                    stmt.close();
+                    return true;
+                }
+            }
+        } catch(SQLException erro) {
+            System.out.println("Erro: "+erro);
+        }
+        return true;
+    }
+    
+    public boolean verificaAmigo (int idAmigo) {
+        String sql = "SELECT * FROM tb_emprestimo WHERE tb_amigo_id_amigo = ? and data_devolucao is null";
+        try{
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            stmt.setInt(1, idAmigo);
+            try(ResultSet res = stmt.executeQuery()){
+                stmt.close();
+                return true;
+            }
+            
+        } catch(SQLException erro) {
+            System.out.println("Erro: "+erro);
+        }
+        return true;
     }
 }

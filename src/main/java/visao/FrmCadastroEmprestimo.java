@@ -1,5 +1,6 @@
 package visao;
 
+import java.sql.Date;
 import javax.swing.JOptionPane;
 import modelo.Emprestimo;
 
@@ -142,7 +143,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         try {
             int idAmigo = 0;
             int idFerramenta = 0;
-            String dataDiaEmp = "";
+            Date dataDiaEmp;
             String[] dataOrdenada = new String[3];
 
             // Verifica se o campo do ID do amigo foi preenchido corretamente
@@ -164,18 +165,24 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 throw new Mensagens("O dia deve ter...");
             } else {
                 dataOrdenada = this.JTFdataDiaEmp.getText().split("/");
-                dataDiaEmp = dataOrdenada[2] + "/" + dataOrdenada[1] + "/" + dataOrdenada[0];
+                dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[2]), Integer.parseInt(dataOrdenada[1]), Integer.parseInt(dataOrdenada[0]));
             }
 
             // Insere o empréstimo no banco de dados e exibe uma mensagem de sucesso
-            if (this.objetoEmprestimo.InsertEmprestimoBD(idFerramenta, idAmigo, dataDiaEmp)) {
-                JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrada com Sucesso!");
-                this.JTFIdamigo.setText("");
-                this.JTFIdferramenta.setText("");
-                this.JTFdataDiaEmp.setText("");
-
+            if (this.objetoEmprestimo.verificaAmigo(idAmigo)) {
+                JOptionPane.showMessageDialog(rootPane, "Este amigo tem emprestimos não concluidos");
             }
-
+            System.out.println(this.objetoEmprestimo.verificaFerramenta(idFerramenta));
+            if (this.objetoEmprestimo.verificaFerramenta(idFerramenta)) {
+                if (this.objetoEmprestimo.InsertEmprestimoBD(idFerramenta, idAmigo, dataDiaEmp)) {
+                    JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrada com Sucesso!");
+                    this.JTFIdamigo.setText("");
+                    this.JTFIdferramenta.setText("");
+                    this.JTFdataDiaEmp.setText("");
+                }
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Esta ferrramenta está indisponivel");
+            }
             // Exibe a lista atualizada de empréstimos no console
             System.out.println(this.objetoEmprestimo.getMinhaLista().toString());
         } catch (Mensagens erro) {

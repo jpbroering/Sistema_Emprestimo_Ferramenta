@@ -1,8 +1,9 @@
 package modelo;
 
-import java.util.Date;
+import java.sql.Date;
 import dao.EmprestimoDAO;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  * Classe para representar um objeto de empréstimo.
@@ -12,8 +13,8 @@ public class Emprestimo {
     private int id;
     private int idFerramenta;
     private int idAmigo;
-    private String dataEmprestimo;
-    private String dataDevolucao;
+    private Date dataEmprestimo;
+    private Date dataDevolucao;
     EmprestimoDAO dao;
 
     /**
@@ -21,7 +22,7 @@ public class Emprestimo {
      * valores padrão.
      */
     public Emprestimo() {
-        this(0, 0, 0, "", "");
+        this(0, 0, 0, null, null);
     }
 
     /**
@@ -32,7 +33,7 @@ public class Emprestimo {
      * @param idAmigo ID do amigo que recebeu o empréstimo.
      * @param dataEmprestimo Data do empréstimo.
      */
-    public Emprestimo(int id, int idFerramenta, int idAmigo, String dataEmprestimo) {
+    public Emprestimo(int id, int idFerramenta, int idAmigo, Date dataEmprestimo) {
         this.id = id;
         this.idFerramenta = idFerramenta;
         this.idAmigo = idAmigo;
@@ -49,7 +50,7 @@ public class Emprestimo {
      * @param dataEmprestimo Data do empréstimo.
      * @param dataDevolucao Data prevista para a devolução.
      */
-    public Emprestimo(int id, int idFerramenta, int idAmigo, String dataEmprestimo, String dataDevolucao) {
+    public Emprestimo(int id, int idFerramenta, int idAmigo, Date dataEmprestimo, Date dataDevolucao) {
         this.id = id;
         this.idFerramenta = idFerramenta;
         this.idAmigo = idAmigo;
@@ -117,7 +118,7 @@ public class Emprestimo {
      *
      * @return A data do empréstimo.
      */
-    public String getDataEmprestimo() {
+    public Date getDataEmprestimo() {
         return dataEmprestimo;
     }
 
@@ -126,7 +127,7 @@ public class Emprestimo {
      *
      * @param dataEmprestimo A data do empréstimo.
      */
-    public void setDataEmprestimo(String dataEmprestimo) {
+    public void setDataEmprestimo(Date dataEmprestimo) {
         this.dataEmprestimo = dataEmprestimo;
     }
 
@@ -135,7 +136,7 @@ public class Emprestimo {
      *
      * @return A data prevista para a devolução.
      */
-    public String getDataDevolucao() {
+    public Date getDataDevolucao() {
         return dataDevolucao;
     }
 
@@ -144,7 +145,7 @@ public class Emprestimo {
      *
      * @param dataDevolucao A data prevista para a devolução.
      */
-    public void setDataDevolucao(String dataDevolucao) {
+    public void setDataDevolucao(Date dataDevolucao) {
         this.dataDevolucao = dataDevolucao;
     }
 
@@ -155,7 +156,6 @@ public class Emprestimo {
      */
     public ArrayList<Emprestimo> getMinhaLista() {
         return dao.getMinhalista();
-
     }
 
     /**
@@ -166,11 +166,18 @@ public class Emprestimo {
      * @param dataEmprestimo A data do empréstimo.
      * @return Verdadeiro se a inserção for bem-sucedida, falso caso contrário.
      */
-    public boolean InsertEmprestimoBD(int idFerramenta, int idAmigo, String dataEmprestimo) {
-
-        int id = dao.maiorID() + 1;
-        Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo);
-        dao.insertEmprestimoBD(objeto);
-        return true;
+    public boolean InsertEmprestimoBD(int idFerramenta, int idAmigo, Date dataEmprestimo) {
+            int id = dao.maiorID() + 1;
+            Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo);
+            dao.insertEmprestimoBD(objeto);
+            return true;
+    }
+    
+    public boolean verificaAmigo(int idAmigo){
+        return dao.verificaAmigo(idAmigo);
+    }
+    
+    public boolean verificaFerramenta(int idFerramenta){
+        return dao.verificaFerramenta(idFerramenta);
     }
 }
