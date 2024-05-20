@@ -4,8 +4,8 @@ import dao.AmigoDAO;
 import java.util.ArrayList;
 
 /**
- * Classe que representa um amigo, herdando de EstruturaBase.
- * Possui um telefone e métodos para manipular e persistir os dados no banco de dados.
+ * Classe que representa um amigo, herdando de EstruturaBase. Possui um telefone
+ * e métodos para manipular e persistir os dados no banco de dados.
  */
 public class Amigo extends EstruturaBase {
 
@@ -19,11 +19,11 @@ public class Amigo extends EstruturaBase {
         this(0, "", "");
     }
 
-     /**
+    /**
      * Construtor que inicializa um objeto Amigo com os valores fornecidos.
      *
-     * @param id       o ID do amigo
-     * @param nome     o nome do amigo
+     * @param id o ID do amigo
+     * @param nome o nome do amigo
      * @param telefone o telefone do amigo
      */
     public Amigo(int id, String nome, String telefone) {
@@ -60,7 +60,7 @@ public class Amigo extends EstruturaBase {
         return super.toString() + ", Telefone: " + telefone;
     }
 
-     /**
+    /**
      * Retorna uma lista de todos os amigos cadastrados.
      *
      * @return uma lista de objetos Amigo
@@ -72,7 +72,7 @@ public class Amigo extends EstruturaBase {
     /**
      * Insere um novo amigo no banco de dados.
      *
-     * @param nome     o nome do amigo
+     * @param nome o nome do amigo
      * @param telefone o telefone do amigo
      * @return true se a inserção for bem-sucedida
      */
@@ -85,4 +85,18 @@ public class Amigo extends EstruturaBase {
 
     }
 
+    public boolean removerAmigoBD(int id) {
+        dao.removerAmigoBD(id);
+        return true;
+    }
+
+    public boolean atualizarAmigoBD(int id, String nome, String telefone) {
+        Amigo objeto = new Amigo(id, nome, telefone);
+        dao.atualizarAmigoBD(objeto);
+        return true;
+    }
+
+    public Amigo buscarAmigoBD(int id) {
+        return dao.buscarAmigoBD(id);
+    }
 }
