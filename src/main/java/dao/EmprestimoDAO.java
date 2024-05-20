@@ -97,6 +97,37 @@ public class EmprestimoDAO extends BaseDAO {
         }
     }
     
+    public boolean deleteEmprestimoBD(int idEmprestimo) {
+        try{
+            Statement stmt = this.getConexao().createStatement();
+            stmt.executeQuery("DELETE FROM tb_emprestimo where id_emprestimo = "+idEmprestimo);
+            stmt.close();
+        } catch(SQLException erro){
+            System.out.println("Erro: "+erro);
+        }
+        return true;
+    }
+    
+    public  boolean updateEmprestimoBD(Emprestimo objeto){
+        String sql = "UPDATE tb_emprestimo set data_emprestimo = ?, data_devolucao = ?, tb_amigo_id_amigo = ?, tb_ferramenta_id_ferramenta = ? WHERE id_emprestimo = ?";
+        try{
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            stmt.setDate(1, objeto.getDataEmprestimo());
+            stmt.setDate(2, objeto.getDataDevolucao());
+            stmt.setInt(3, objeto.getIdAmigo());
+            stmt.setInt(4, objeto.getIdFerramenta());
+            stmt.setInt(5, objeto.getId());
+            
+            stmt.execute();
+            stmt.close();
+            
+            return true;
+        } catch(SQLException erro){
+            System.out.println("Erro: "+erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    
     public boolean verificaFerramenta (int idFerramenta) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_ferramenta_id_ferramenta = ? and data_devolucao is null";
         try{

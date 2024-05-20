@@ -19,7 +19,7 @@ public class BaseDAO {
             String database = "bd_emprestimo";//colocar db
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "root";
+            String password = "Unisul@1520";
 
             connection = DriverManager.getConnection(url, user, password);
 
