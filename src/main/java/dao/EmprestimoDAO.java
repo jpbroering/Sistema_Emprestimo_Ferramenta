@@ -90,7 +90,6 @@ public class EmprestimoDAO extends BaseDAO {
             stmt.setDate(5, objeto.getDataDevolucao());
             stmt.execute();
             stmt.close();
-
             return true;
         } catch (SQLException erro) {
             System.out.println("Erro: " + erro);
@@ -101,7 +100,6 @@ public class EmprestimoDAO extends BaseDAO {
     public boolean verificaFerramenta (int idFerramenta) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_ferramenta_id_ferramenta = ? and data_devolucao is null";
         try{
-            System.out.println(idFerramenta);
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setInt(1, idFerramenta);
             try(ResultSet res = stmt.executeQuery()){
@@ -125,8 +123,13 @@ public class EmprestimoDAO extends BaseDAO {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setInt(1, idAmigo);
             try(ResultSet res = stmt.executeQuery()){
-                stmt.close();
-                return true;
+                if(res.next()){
+                    stmt.close();
+                    return true;
+                } else {
+                    stmt.close();
+                    return false;
+                }
             }
             
         } catch(SQLException erro) {

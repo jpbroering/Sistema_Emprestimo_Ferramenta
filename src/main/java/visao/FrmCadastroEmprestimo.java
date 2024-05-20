@@ -32,6 +32,7 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         JBCancelar = new javax.swing.JButton();
         JBCadastrar = new javax.swing.JButton();
         JTFdataDiaEmp = new javax.swing.JFormattedTextField();
+        JBPreencheData = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -67,10 +68,17 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
             }
         });
 
-        JTFdataDiaEmp.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
+        JTFdataDiaEmp.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/dd"))));
         JTFdataDiaEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JTFdataDiaEmpActionPerformed(evt);
+            }
+        });
+
+        JBPreencheData.setText("Auto preencher");
+        JBPreencheData.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JBPreencheDataActionPerformed(evt);
             }
         });
 
@@ -83,6 +91,8 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(JTFdataDiaEmp, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(JBPreencheData, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -112,7 +122,9 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(JTFdataDiaEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JTFdataDiaEmp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JBPreencheData))
                 .addGap(62, 62, 62)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBCadastrar)
@@ -165,14 +177,14 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 throw new Mensagens("O dia deve ter...");
             } else {
                 dataOrdenada = this.JTFdataDiaEmp.getText().split("/");
-                dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[2]), Integer.parseInt(dataOrdenada[1]), Integer.parseInt(dataOrdenada[0]));
+                dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[0])-1900,Integer.parseInt(dataOrdenada[1])-1,Integer.parseInt(dataOrdenada[2]));
+                System.out.println(dataDiaEmp);
             }
 
             // Insere o empréstimo no banco de dados e exibe uma mensagem de sucesso
             if (this.objetoEmprestimo.verificaAmigo(idAmigo)) {
                 JOptionPane.showMessageDialog(rootPane, "Este amigo tem emprestimos não concluidos");
             }
-            System.out.println(this.objetoEmprestimo.verificaFerramenta(idFerramenta));
             if (this.objetoEmprestimo.verificaFerramenta(idFerramenta)) {
                 if (this.objetoEmprestimo.InsertEmprestimoBD(idFerramenta, idAmigo, dataDiaEmp)) {
                     JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrada com Sucesso!");
@@ -200,10 +212,18 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFdataDiaEmpActionPerformed
 
+    private void JBPreencheDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPreencheDataActionPerformed
+        long data = System.currentTimeMillis();
+        Date dataAtual = new Date(data);
+        String dataFormatada = dataAtual.toString().replace("-", "/");
+        JTFdataDiaEmp.setText(dataFormatada);
+    }//GEN-LAST:event_JBPreencheDataActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBCadastrar;
     private javax.swing.JButton JBCancelar;
+    private javax.swing.JButton JBPreencheData;
     private javax.swing.JTextField JTFIdamigo;
     private javax.swing.JTextField JTFIdferramenta;
     private javax.swing.JFormattedTextField JTFdataDiaEmp;
