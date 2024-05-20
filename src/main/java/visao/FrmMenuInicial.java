@@ -19,6 +19,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JmCadastrarFerramenta = new javax.swing.JMenu();
         JMFerramenta = new javax.swing.JMenuItem();
         JmCadastrarAmigo = new javax.swing.JMenuItem();
+        JMRegistraEmprestimo = new javax.swing.JMenuItem();
         JMGerenciarFerramenta = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         JMGerenciarAmigo = new javax.swing.JMenuItem();
@@ -27,9 +28,6 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JMRelátorioFerramenta = new javax.swing.JMenuItem();
         JMRelatorioEmprestimo = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        JMRegistraEmprestimo = new javax.swing.JMenuItem();
-        JMQuitarEmprestimo = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -65,6 +63,14 @@ public class FrmMenuInicial extends javax.swing.JFrame {
             }
         });
         JmCadastrarFerramenta.add(JmCadastrarAmigo);
+
+        JMRegistraEmprestimo.setText("Cadastrar Emprestimo");
+        JMRegistraEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMRegistraEmprestimoActionPerformed(evt);
+            }
+        });
+        JmCadastrarFerramenta.add(JMRegistraEmprestimo);
 
         jMenuBar1.add(JmCadastrarFerramenta);
 
@@ -108,21 +114,6 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         jMenu5.add(jMenuItem3);
 
         jMenuBar1.add(jMenu5);
-
-        jMenu2.setText("Emprestimo");
-
-        JMRegistraEmprestimo.setText("Registrar Emprestimo");
-        JMRegistraEmprestimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JMRegistraEmprestimoActionPerformed(evt);
-            }
-        });
-        jMenu2.add(JMRegistraEmprestimo);
-
-        JMQuitarEmprestimo.setText("Quitar Emprestimo");
-        jMenu2.add(JMQuitarEmprestimo);
-
-        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -176,14 +167,12 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem JMGerenciarAmigo;
     private javax.swing.JMenuItem JMGerenciarEmprestimo;
     private javax.swing.JMenu JMGerenciarFerramenta;
-    private javax.swing.JMenuItem JMQuitarEmprestimo;
     private javax.swing.JMenuItem JMRegistraEmprestimo;
     private javax.swing.JMenuItem JMRelatorioEmprestimo;
     private javax.swing.JMenuItem JMRelátorioFerramenta;
     private javax.swing.JMenuItem JmCadastrarAmigo;
     private javax.swing.JMenu JmCadastrarFerramenta;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
