@@ -85,6 +85,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JMGerenciarFerramenta.add(jMenuItem2);
 
         JMGerenciarAmigo.setText("Gerenciar Amigos");
+        JMGerenciarAmigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMGerenciarAmigoActionPerformed(evt);
+            }
+        });
         JMGerenciarFerramenta.add(JMGerenciarAmigo);
 
         JMGerenciarEmprestimo.setText("Gerenciar Emprestimos");
@@ -161,6 +166,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         FrmCadastroFerramenta janela = new FrmCadastroFerramenta();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMFerramentaActionPerformed
+
+    private void JMGerenciarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarAmigoActionPerformed
+    FrmGerenciaAmigo janela = new FrmGerenciaAmigo();
+    janela.setVisible(rootPaneCheckingEnabled);// TODO add your handling code here:
+    }//GEN-LAST:event_JMGerenciarAmigoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem JMFerramenta;
