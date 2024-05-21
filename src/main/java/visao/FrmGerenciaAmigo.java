@@ -172,10 +172,10 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
-        try{
+          try{
             int id = 0;
             String nome = "";
-    
+            
             String telefone = "";
            
 
@@ -197,7 +197,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
             } else {
                 id = Integer.parseInt(this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 0).toString());
             }
-            if(this.objetoAmigo.atualizarAmigoBD(id, nome, telefone)){
+            if(this.objetoAmigo.updateAmigoBD(id, nome, telefone)){
                 JOptionPane.showMessageDialog(rootPane, "Amigo Cadastrado com Sucesso!");
                 this.JTFNome.setText("");
                 this.JTFTelefone.setText("");
@@ -223,7 +223,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
             }
             int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse amigo?");
             if(respostaUsuario == 0){
-                if(this.objetoAmigo.removerAmigoBD(id)){
+                if(this.objetoAmigo.deleteAmigoBD(id)){
                     this.JTFNome.setText("");
                     this.JTFTelefone.setText("");
                     
