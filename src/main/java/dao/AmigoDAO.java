@@ -160,6 +160,12 @@ public class AmigoDAO extends BaseDAO {
 
     }
 
+    /**
+     * Verifica se existe algum empréstimo relacionado a um amigo específico.
+     *
+     * @param idAmigo ID do amigo a ser verificado
+     * @return true se existir um empréstimo relacionado, false caso contrário
+     */
     public boolean verificaAmigo(int idAmigo) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_amigo_id_amigo = ?";
         try {
