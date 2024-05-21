@@ -140,7 +140,8 @@ public class AmigoDAO extends BaseDAO {
      * @return objeto Amigo se encontrado, caso contrário retorna null
      */
     public Amigo buscarAmigoBD(int id) {
-        String sql = "SELECT * FROM tb_amigo WHERE id_amigo = ?";
+        String sql = "SELECT * FROM tb_amigo WHER"
+                + "E id_amigo = ?";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setInt(1, id);
@@ -156,6 +157,28 @@ public class AmigoDAO extends BaseDAO {
             System.out.println("Erro: " + erro);
         }
         return null;
+
+    }
+
+    public boolean verificaAmigo(int idAmigo) {
+        String sql = "SELECT * FROM tb_emprestimo WHERE tb_amigo_id_amigo = ?";
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            stmt.setInt(1, idAmigo);
+            try (ResultSet res = stmt.executeQuery()) {
+                if (res.next()) {
+                    stmt.close();
+                    return true;
+                } else {
+                    stmt.close();
+                    return false;
+                }
+            }
+
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+        }
+        return true;
 
     }
 }
