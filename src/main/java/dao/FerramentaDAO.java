@@ -28,7 +28,7 @@ public class FerramentaDAO extends BaseDAO {
 
             ResultSet res = stmt.executeQuery("SELECT * FROM tb_ferramenta");
             while (res.next()) {
-                int id = res.getInt("id");
+                int id = res.getInt("id_ferramenta");
                 String nome = res.getString("nome");
                 String marca = res.getString("marca");
                 float custo = res.getInt("custo");
