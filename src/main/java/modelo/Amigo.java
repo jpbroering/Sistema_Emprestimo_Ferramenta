@@ -85,18 +85,18 @@ public class Amigo extends EstruturaBase {
 
     }
 
-    public boolean removerAmigoBD(int id) {
-        dao.removerAmigoBD(id);
+    public boolean deleteAmigoBD(int id) {
+        dao.deleteAmigoBD(id);
         return true;
     }
 
-    public boolean atualizarAmigoBD(int id, String nome, String telefone) {
+    public boolean updateAmigoBD(int id, String nome, String telefone) {
         Amigo objeto = new Amigo(id, nome, telefone);
-        dao.atualizarAmigoBD(objeto);
+        dao.updateAmigoBD(objeto);
         return true;
     }
 
-    public Amigo buscarAmigoBD(int id) {
-        return dao.buscarAmigoBD(id);
+    public Amigo carregaAmigoBD(int id) {
+        return dao.carregaAmigoBD(id);
     }
 }

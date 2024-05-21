@@ -97,7 +97,7 @@ public class AmigoDAO extends BaseDAO {
      * @param objeto amigo com os dados atualizados
      * @return true se a atualização for bem-sucedida
      */
-    public boolean atualizarAmigoBD(Amigo objeto) {
+    public boolean updateAmigoBD(Amigo objeto) {
         String sql = "UPDATE tb_amigo SET nome = ?, telefone = ? WHERE id_amigo = ?";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -119,7 +119,7 @@ public class AmigoDAO extends BaseDAO {
      * @param id ID do amigo a ser removido
      * @return true se a remoção for bem-sucedida
      */
-    public boolean removerAmigoBD(int id) {
+    public boolean deleteAmigoBD(int id) {
         String sql = "DELETE FROM tb_amigo WHERE id_amigo = ?";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -139,7 +139,7 @@ public class AmigoDAO extends BaseDAO {
      * @param id ID do amigo a ser buscado
      * @return objeto Amigo se encontrado, caso contrário retorna null
      */
-    public Amigo buscarAmigoBD(int id) {
+    public Amigo carregaAmigoBD(int id) {
         String sql = "SELECT * FROM tb_amigo WHER"
                 + "E id_amigo = ?";
         try {
