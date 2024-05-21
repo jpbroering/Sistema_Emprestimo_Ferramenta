@@ -173,11 +173,11 @@ public class Emprestimo {
             return true;
     }
     
-    public boolean verificaAmigo(int idAmigo){
-        return dao.verificaAmigo(idAmigo);
+    public boolean verificaEmprestimoPendente(int idAmigo){
+        return dao.verificaEmprestimoPendente(idAmigo);
     }
     
-    public boolean verificaFerramenta(int idFerramenta){
-        return dao.verificaFerramenta(idFerramenta);
+    public boolean verificaFerramentaEmprestada(int idFerramenta){
+        return dao.verificaFerramentaEmprestada(idFerramenta);
     }
 }

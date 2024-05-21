@@ -182,10 +182,10 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
             }
 
             // Insere o empréstimo no banco de dados e exibe uma mensagem de sucesso
-            if (this.objetoEmprestimo.verificaAmigo(idAmigo)) {
+            if (this.objetoEmprestimo.verificaEmprestimoPendente(idAmigo)) {
                 JOptionPane.showMessageDialog(rootPane, "Este amigo tem emprestimos não concluidos");
             }
-            if (this.objetoEmprestimo.verificaFerramenta(idFerramenta)) {
+            if (this.objetoEmprestimo.verificaFerramentaEmprestada(idFerramenta)) {
                 if (this.objetoEmprestimo.InsertEmprestimoBD(idFerramenta, idAmigo, dataDiaEmp)) {
                     JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrada com Sucesso!");
                     this.JTFIdamigo.setText("");

@@ -128,7 +128,7 @@ public class EmprestimoDAO extends BaseDAO {
         }
     }
     
-    public boolean verificaFerramenta (int idFerramenta) {
+    public boolean verificaFerramentaEmprestada (int idFerramenta) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_ferramenta_id_ferramenta = ? and data_devolucao is null";
         try{
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -148,7 +148,7 @@ public class EmprestimoDAO extends BaseDAO {
         return true;
     }
     
-    public boolean verificaAmigo (int idAmigo) {
+    public boolean verificaEmprestimoPendente (int idAmigo) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_amigo_id_amigo = ? and data_devolucao is null";
         try{
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
