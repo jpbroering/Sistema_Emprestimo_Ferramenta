@@ -146,7 +146,8 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMRelátorioFerramentaActionPerformed
 
     private void JMGerenciarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarEmprestimoActionPerformed
-        // TODO add your handling code here:
+        FrmGerenciarEmprestimo janela = new FrmGerenciarEmprestimo();
+        janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarEmprestimoActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
