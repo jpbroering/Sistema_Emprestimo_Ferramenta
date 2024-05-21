@@ -85,17 +85,37 @@ public class Amigo extends EstruturaBase {
 
     }
 
+    /**
+     * Remove um amigo do banco de dados.
+     *
+     * @param id o ID do amigo a ser removido
+     * @return true se a remoção for bem-sucedida
+     */
     public boolean deleteAmigoBD(int id) {
         dao.deleteAmigoBD(id);
         return true;
     }
 
+    /**
+     * Atualiza os dados de um amigo no banco de dados.
+     *
+     * @param id o ID do amigo
+     * @param nome o novo nome do amigo
+     * @param telefone o novo telefone do amigo
+     * @return true se a atualização for bem-sucedida
+     */
     public boolean updateAmigoBD(int id, String nome, String telefone) {
         Amigo objeto = new Amigo(id, nome, telefone);
         dao.updateAmigoBD(objeto);
         return true;
     }
 
+    /**
+     * Busca um amigo no banco de dados pelo ID.
+     *
+     * @param id o ID do amigo a ser buscado
+     * @return objeto Amigo se encontrado, caso contrário retorna null
+     */
     public Amigo carregaAmigoBD(int id) {
         return dao.carregaAmigoBD(id);
     }
