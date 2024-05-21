@@ -160,21 +160,21 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
             // Verifica se o campo do ID do amigo foi preenchido corretamente
             if (this.JTFIdamigo.getText().length() < 0) {
-                throw new Mensagens("O id deve ser maior que zero");
+                throw new Mensagem("O id deve ser maior que zero");
             } else {
                 idAmigo = Integer.parseInt(this.JTFIdamigo.getText());
             }
 
             // Verifica se o campo do ID da ferramenta foi preenchido corretamente
             if (this.JTFIdferramenta.getText().length() < 0) {
-                throw new Mensagens("O id deve ser maior que zero");
+                throw new Mensagem("O id deve ser maior que zero");
             } else {
                 idFerramenta = Integer.parseInt(this.JTFIdferramenta.getText());
             }
 
             // Verifica se o campo da data do empréstimo foi preenchido corretamente
             if (this.JTFdataDiaEmp.getText().length() < 0) {
-                throw new Mensagens("O dia deve ter...");
+                throw new Mensagem("O dia deve ter...");
             } else {
                 dataOrdenada = this.JTFdataDiaEmp.getText().split("/");
                 dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[0])-1900,Integer.parseInt(dataOrdenada[1])-1,Integer.parseInt(dataOrdenada[2]));
@@ -197,9 +197,9 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
             }
             // Exibe a lista atualizada de empréstimos no console
             System.out.println(this.objetoEmprestimo.getMinhaLista().toString());
-        } catch (Mensagens erro) {
+        } catch (Mensagem erro) {
 
-            // Exibe mensagens de erro personalizadas caso ocorra uma exceção do tipo Mensagens
+            // Exibe mensagens de erro personalizadas caso ocorra uma exceção do tipo Mensagem
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
 

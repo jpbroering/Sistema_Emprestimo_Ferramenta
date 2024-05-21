@@ -112,17 +112,17 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
             String marca;
             float custo;
             if(JTFNome.getText().length() < 2){
-                throw new Mensagens("Nome deve conter pelo menos 2 caracteres");
+                throw new Mensagem("Nome deve conter pelo menos 2 caracteres");
             } else {
                 nome = JTFNome.getText();
             }
             if(JTFMarca.getText().length() < 2) {
-                throw new Mensagens("Marca deve conter pelo menos 2 caracteres");
+                throw new Mensagem("Marca deve conter pelo menos 2 caracteres");
             } else {
                 marca = JTFMarca.getText();
             }
             if(JTFCusto.getText().length() < 0){
-                throw new Mensagens("Custo tem que ser um valor maior que 0");
+                throw new Mensagem("Custo tem que ser um valor maior que 0");
             } else {
                 custo = Float.parseFloat(JTFCusto.getText());
             }
@@ -132,7 +132,7 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
                 this.JTFMarca.setText("");
                 this.JTFCusto.setText("");
             }
-        } catch(Mensagens erro) {
+        } catch(Mensagem erro) {
             JOptionPane.showMessageDialog(null,erro.getMessage());
         } catch(NumberFormatException erro2){
             JOptionPane.showMessageDialog(null,"Imforme um número válido");

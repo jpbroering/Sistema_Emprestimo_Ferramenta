@@ -130,14 +130,14 @@ public class FrmCadastroAmigo extends javax.swing.JFrame {
 
             // Verifica se o campo do nome do amigo foi preenchido corretamente
             if (this.JTFNome.getText().length() <= 0) {
-                throw new Mensagens("O nome deve ser preenchido");
+                throw new Mensagem("O nome deve ser preenchido");
             } else {
                 nomeAmigo = this.JTFNome.getText();
             }
 
             // Verifica se o campo do telefone do amigo foi preenchido corretamente
             if (this.JTFTelefone.getText().length() != 11) {
-                throw new Mensagens("O número de telefone adicionado deve apresentar o DDD");
+                throw new Mensagem("O número de telefone adicionado deve apresentar o DDD");
             } else {
                 telefoneAmigo = this.JTFTelefone.getText();
             }
@@ -151,8 +151,8 @@ public class FrmCadastroAmigo extends javax.swing.JFrame {
 
             // Exibe a lista atualizada de amigos no console
             System.out.println(this.objetoAmigo.getMinhaLista().toString());
-        } catch (Mensagens erro) {
-            // Exibe mensagens de erro personalizadas caso ocorra uma exceção do tipo Mensagens
+        } catch (Mensagem erro) {
+            // Exibe mensagens de erro personalizadas caso ocorra uma exceção do tipo Mensagem
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } catch (NumberFormatException erro2) {
             // Exibe uma mensagem de erro genérica caso ocorra uma exceção do tipo NumberFormatException

@@ -180,20 +180,20 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
            
 
             if(this.JTFNome.getText().length()<2){
-                throw new Mensagens("Nome deve conter pelo menos 2 caracteres");
+                throw new Mensagem("Nome deve conter pelo menos 2 caracteres");
             } else {
                 nome = this.JTFNome.getName();
             }
            
             if(this.JTFTelefone.getText().length() <1){
-                throw new Mensagens(" O número de telefone deve conter o DDD");
+                throw new Mensagem(" O número de telefone deve conter o DDD");
             } else {
                 telefone = this.JTFTelefone.getText();
             }
            
             
              if(this.jTableAmigo.getSelectedRow() == -1){
-                throw new Mensagens("Primeiro selecione um amigo para editar");
+                throw new Mensagem("Primeiro selecione um amigo para editar");
             } else {
                 id = Integer.parseInt(this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 0).toString());
             }
@@ -204,7 +204,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
                 
             }
             System.out.println(this.objetoAmigo.getMinhaLista().toString());
-        } catch(Mensagens erro) {
+        } catch(Mensagem erro) {
             JOptionPane.showMessageDialog(null,erro.getMessage());
         } catch(NumberFormatException erro2){
             JOptionPane.showMessageDialog(null,"Imforme um número válido");
@@ -217,7 +217,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
         try{
             int id = 0;
             if(this.jTableAmigo.getSelectedRow() == -1){
-                throw new Mensagens("Primeiro Selecione um amigo para Apagar");
+                throw new Mensagem("Primeiro Selecione um amigo para Apagar");
             } else{
                 id = Integer.parseInt(this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 0).toString());
             }
@@ -231,7 +231,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
                 }
             }
             System.out.println(this.objetoAmigo.getMinhaLista().toString());
-        } catch(Mensagens erro){
+        } catch(Mensagem erro){
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } finally {
             carregaTabela();
