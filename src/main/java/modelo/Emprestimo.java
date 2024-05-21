@@ -173,18 +173,42 @@ public class Emprestimo {
             return true;
     }
     
+    /**
+     * Apaga um empréstimo do banco de dados.
+     * 
+     * @param idEmprestimo O id do emprestimo a ser apagado.
+     * @return Verdadeiro se a remoção for bem-sucedida, falso caso contrário.
+     */
     public boolean deleteEmprestimoBD(int idEmprestimo){
         return dao.deleteEmprestimoBD(idEmprestimo);
     }
     
+    /**
+     * Atualiza o conteúdo de um emprestimo no banco de dados.
+     * 
+     * @param objeto do tipo Emprestimo.
+     * @return Verdadeiro se a atualização for bem-sucedida, falso caso contrário.
+     */
     public boolean updateEmprestimoBD(Emprestimo objeto){
         return dao.updateEmprestimoBD(objeto);
     }
     
+    /**
+     * Verifica se tem emprestimos pendentes vinculados ao idAmigo.
+     * 
+     * @param idAmigo o ID do amigo a ser verificado.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     */
     public boolean verificaEmprestimoPendente(int idAmigo){
         return dao.verificaEmprestimoPendente(idAmigo);
     }
     
+    /**
+     * Verifica se tem emprestimos pendentes vinculados a idFerramenta.
+     * 
+     * @param idFerramenta o ID da ferramenta a ser verificada.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     */
     public boolean verificaFerramentaEmprestada(int idFerramenta){
         return dao.verificaFerramentaEmprestada(idFerramenta);
     }

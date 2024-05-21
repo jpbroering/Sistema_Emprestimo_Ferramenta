@@ -88,6 +88,7 @@ public class EmprestimoDAO extends BaseDAO {
             stmt.setInt(3, objeto.getIdFerramenta());
             stmt.setDate(4, objeto.getDataEmprestimo());
             stmt.setDate(5, objeto.getDataDevolucao());
+            
             stmt.execute();
             stmt.close();
             return true;
@@ -97,6 +98,12 @@ public class EmprestimoDAO extends BaseDAO {
         }
     }
     
+    /**
+     * Remove um empréstimo do banco de dados.
+     * 
+     * @param idEmprestimo o ID do emprestimo a ser removido.
+     * @return Verdadeiro se a remoção for bem-sucedida, falso caso contrário.
+     */
     public boolean deleteEmprestimoBD(int idEmprestimo) {
         try{
             Statement stmt = this.getConexao().createStatement();
@@ -108,6 +115,12 @@ public class EmprestimoDAO extends BaseDAO {
         return true;
     }
     
+    /**
+     * Atualiza o conteúdo de um emprestimo no banco de dados.
+     * 
+     * @param objeto do tipo emprestimo.
+     * @return Verdadeiro se a atualização for bem-sucedida, falso caso contrário.
+     */
     public  boolean updateEmprestimoBD(Emprestimo objeto){
         String sql = "UPDATE tb_emprestimo set data_emprestimo = ?, data_devolucao = ?, tb_amigo_id_amigo = ?, tb_ferramenta_id_ferramenta = ? WHERE id_emprestimo = ?";
         try{
@@ -128,6 +141,12 @@ public class EmprestimoDAO extends BaseDAO {
         }
     }
     
+    /**
+     * Verifica se tem emprestimos pendentes vinculados a idFerramenta.
+     * 
+     * @param idFerramenta o ID da ferramenta a ser verificada.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     */
     public boolean verificaFerramentaEmprestada (int idFerramenta) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_ferramenta_id_ferramenta = ? and data_devolucao is null";
         try{
@@ -148,6 +167,12 @@ public class EmprestimoDAO extends BaseDAO {
         return true;
     }
     
+    /**
+     * Verifica se tem emprestimos pendentes vinculados a idFerramenta.
+     * 
+     * @param idAmigo o ID da ferramenta a ser verificada.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     */
     public boolean verificaEmprestimoPendente (int idAmigo) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_amigo_id_amigo = ? and data_devolucao is null";
         try{
