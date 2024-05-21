@@ -8,10 +8,19 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import modelo.Ferramenta;
 
+/**
+ * Classe responsável por realizar operações de acesso a dados relacionadas às
+ * ferramentas no banco de dados.
+ */
 public class FerramentaDAO extends BaseDAO {
     
     private static ArrayList<Ferramenta> listaFerramenta = new ArrayList<>();
 
+   /**
+     * Retorna a lista de todas as ferramentas cadastradas no banco de dados.
+     *
+     * @return lista de objetos Ferramenta
+     */
     public ArrayList<Ferramenta> getMinhalista() {
         listaFerramenta.clear();
         try {
@@ -35,10 +44,20 @@ public class FerramentaDAO extends BaseDAO {
         return listaFerramenta;
     }
     
+     /**
+     * Define a lista de ferramentas.
+     *
+     * @param listaFerramenta lista de objetos Ferramenta
+     */
     public void setMinhalista(ArrayList<Ferramenta> listaFerramenta) {
         FerramentaDAO.listaFerramenta = listaFerramenta;
     }
     
+     /**
+     * Retorna o maior ID de ferramenta presente no banco de dados.
+     *
+     * @return o maior ID de ferramenta
+     */
     public int maiorID(){
         int maiorID = 0;
         try{
@@ -53,6 +72,12 @@ public class FerramentaDAO extends BaseDAO {
         return maiorID;
     }
     
+    /**
+     * Insere uma nova ferramenta no banco de dados.
+     *
+     * @param objeto ferramenta a ser inserida
+     * @return true se a inserção for bem-sucedida
+     */
     public boolean insertFerramentaBD(Ferramenta objeto) {
         String sql = "INSERT INTO tb_ferramenta(id_ferramenta,nome,marca,custo) VALUES(?,?,?,?)";
         try {
