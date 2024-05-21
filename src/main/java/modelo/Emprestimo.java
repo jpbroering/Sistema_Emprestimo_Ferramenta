@@ -166,11 +166,19 @@ public class Emprestimo {
      * @param dataEmprestimo A data do empréstimo.
      * @return Verdadeiro se a inserção for bem-sucedida, falso caso contrário.
      */
-    public boolean InsertEmprestimoBD(int idFerramenta, int idAmigo, Date dataEmprestimo) {
+    public boolean insertEmprestimoBD(int idFerramenta, int idAmigo, Date dataEmprestimo) {
             int id = dao.maiorID() + 1;
             Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo);
             dao.insertEmprestimoBD(objeto);
             return true;
+    }
+    
+    public boolean deleteEmprestimoBD(int idEmprestimo){
+        return dao.deleteEmprestimoBD(idEmprestimo);
+    }
+    
+    public boolean updateEmprestimoBD(Emprestimo objeto){
+        return dao.updateEmprestimoBD(objeto);
     }
     
     public boolean verificaEmprestimoPendente(int idAmigo){
