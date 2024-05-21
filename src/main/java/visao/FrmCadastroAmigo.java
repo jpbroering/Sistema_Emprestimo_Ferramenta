@@ -144,7 +144,7 @@ public class FrmCadastroAmigo extends javax.swing.JFrame {
 
             // Insere o amigo no banco de dados e exibe uma mensagem de sucesso
             if (this.objetoAmigo.InsertAmigoBD(nomeAmigo, telefoneAmigo)) {
-                JOptionPane.showMessageDialog(rootPane, "Amigo cadastrado com sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Amigo cadastrado com sucesso");
                 this.JTFNome.setText("");
                 this.JTFTelefone.setText("");
             }
