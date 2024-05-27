@@ -32,14 +32,14 @@ RF013: O sistema deve permitir que ao realizar um novo empréstimo, verificar se
 
 ## Requisitos não funcionais
 
-RNF 001: O software deve ser instalado e executado localmente no computador do tio-avô.
+RNF001: O software deve ser instalado e executado localmente no computador do tio-avô.
 
-RNF 002: O sistema irá ser programado em Java EE 6.
+RNF002: O sistema irá ser programado em Java EE 6.
 
-RNF 003: O banco de dados usado será MySQL WorkBench 8.0 CE.
+RNF003: O banco de dados usado será MySQL WorkBench 8.0 CE.
 
-RNF 004: A agenda integrada que será utilizada é a do google.
+RNF004: A agenda integrada que será utilizada é a do google.
 
-RNF 005: O sistema operacional compatível é o Windows 10.
+RNF005: O sistema operacional compatível é o Windows 10.
 
 
