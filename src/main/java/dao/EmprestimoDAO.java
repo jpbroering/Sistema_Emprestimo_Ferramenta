@@ -107,7 +107,7 @@ public class EmprestimoDAO extends BaseDAO {
     public boolean deleteEmprestimoBD(int idEmprestimo) {
         try{
             Statement stmt = this.getConexao().createStatement();
-            stmt.executeQuery("DELETE FROM tb_emprestimo where id_emprestimo = "+idEmprestimo);
+            stmt.executeUpdate("DELETE FROM tb_emprestimo where id_emprestimo = "+idEmprestimo);
             stmt.close();
         } catch(SQLException erro){
             System.out.println("Erro: "+erro);
