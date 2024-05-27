@@ -119,4 +119,8 @@ public class Amigo extends EstruturaBase {
     public Amigo carregaAmigoBD(int id) {
         return dao.carregaAmigoBD(id);
     }
+
+    public boolean verificaAmigo(int id) {
+        return dao.verificaAmigo(id);
+    }
 }
