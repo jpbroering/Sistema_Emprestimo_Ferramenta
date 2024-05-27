@@ -1,4 +1,3 @@
-
 package visao;
 
 import java.util.ArrayList;
@@ -6,27 +5,51 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Amigo;
 
+/**
+ * Classe que representa a interface gráfica para gerenciamento de amigos. Esta
+ * classe estende a classe javax.swing.JFrame.
+ */
 public class FrmGerenciaAmigo extends javax.swing.JFrame {
 
+    // Atributo para armazenar o objeto Amigo
     private Amigo objetoAmigo;
-    
+
+    /**
+     * Construtor padrão da classe FrmGerenciaAmigo. Inicializa os componentes
+     * da interface gráfica, cria um novo objeto Amigo e carrega a tabela de
+     * amigos.
+     */
     public FrmGerenciaAmigo() {
         initComponents();
         this.objetoAmigo = new Amigo();
         this.carregaTabela();
     }
 
-    public void carregaTabela(){
-         DefaultTableModel modelo = (DefaultTableModel) jTableAmigo.getModel();
+    /**
+     * Método para carregar os dados dos amigos na tabela. Obtém a referência ao
+     * modelo da tabela, limpa suas linhas e preenche com os dados dos amigos
+     * presentes na lista.
+     */
+    public void carregaTabela() {
+
+        // Obtém o modelo da tabela
+        DefaultTableModel modelo = (DefaultTableModel) jTableAmigo.getModel();
+
+        // Limpa todas as linhas do modelo
         modelo.setNumRows(0);
+
+        // Obtém a lista de amigos
         ArrayList<Amigo> minhaLista = objetoAmigo.getMinhaLista();
-        for(Amigo a : minhaLista){
+
+        // Para cada amigo na lista, adiciona uma nova linha na tabela
+        for (Amigo a : minhaLista) {
             modelo.addRow(new Object[]{
                 a.getId(),
                 a.getNome(),
                 a.getTelefone()});
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -55,7 +78,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -172,96 +195,159 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
-          try{
+
+        /**
+         * Método para atualizar um amigo existente. Este método é acionado
+         * quando o usuário tenta atualizar as informações de um amigo na
+         * interface gráfica. Verifica se o nome e o número de telefone são
+         * válidos. Selecione um amigo na tabela antes de editar. Atualiza o
+         * amigo no banco de dados e limpa os campos de texto após a atualização
+         * bem-sucedida. Lança e trata exceções para erros específicos, como
+         * nome curto, número de telefone ausente ou seleção de amigo não
+         * realizada. Se ocorrer uma exceção, exibe uma mensagem de erro
+         * correspondente. Finalmente, recarrega a tabela de amigos para
+         * refletir as alterações realizadas.
+         */
+        try {
+            // Variáveis para armazenar os dados do amigo
             int id = 0;
             String nome = "";
-            
             String telefone = "";
-           
 
-            if(this.JTFNome.getText().length()<2){
+            // Verifica se o nome tem pelo menos 2 caracteres
+            if (this.JTFNome.getText().length() < 2) {
                 throw new Mensagem("Nome deve conter pelo menos 2 caracteres");
             } else {
-                nome = this.JTFNome.getName();
+                nome = this.JTFNome.getText();
+
             }
-           
-            if(this.JTFTelefone.getText().length() <1){
+
+            // Verifica se o número de telefone contém o DDD
+            if (this.JTFTelefone.getText().length() < 1) {
                 throw new Mensagem(" O número de telefone deve conter o DDD");
             } else {
                 telefone = this.JTFTelefone.getText();
             }
-           
-            
-             if(this.jTableAmigo.getSelectedRow() == -1){
+
+            // Verifica se um amigo foi selecionado na tabela para edição
+            if (this.jTableAmigo.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro selecione um amigo para editar");
             } else {
                 id = Integer.parseInt(this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 0).toString());
             }
-            if(this.objetoAmigo.updateAmigoBD(id, nome, telefone)){
-                JOptionPane.showMessageDialog(rootPane, "Amigo Cadastrado com Sucesso!");
+
+            // Atualiza o amigo no banco de dados e exibe uma mensagem de sucesso
+            if (this.objetoAmigo.updateAmigoBD(id, nome, telefone)) {
+                JOptionPane.showMessageDialog(rootPane, "Amigo autalizado com Sucesso!");
+
+                // Limpa os campos de texto após a atualização bem-sucedida
                 this.JTFNome.setText("");
                 this.JTFTelefone.setText("");
-                
+
             }
+
+            // Imprime a lista atualizada de amigos no console (para fins de depuração)
             System.out.println(this.objetoAmigo.getMinhaLista().toString());
-        } catch(Mensagem erro) {
-            JOptionPane.showMessageDialog(null,erro.getMessage());
-        } catch(NumberFormatException erro2){
-            JOptionPane.showMessageDialog(null,"Imforme um número válido");
+        } catch (Mensagem erro) {
+
+            // Captura e exibe uma mensagem de erro específica definida pelo usuário
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+
+            // Captura e exibe uma mensagem de erro se um número inválido for inserido
+            JOptionPane.showMessageDialog(null, "Imforme um número válido");
         } finally {
+
+            // Recarrega a tabela de amigos, independentemente de qualquer exceção ocorrida
             carregaTabela();
         }
     }//GEN-LAST:event_JBEditarActionPerformed
 
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
-        try{
+
+        /**
+         * Método para excluir um amigo existente. Este método é acionado quando
+         * o usuário tenta excluir um amigo na interface gráfica. Verifica se um
+         * amigo foi selecionado na tabela antes de prosseguir com a exclusão.
+         * Exibe um diálogo de confirmação para garantir que o usuário deseja
+         * realmente excluir o amigo selecionado. Se o usuário confirmar a
+         * exclusão, o amigo é removido do banco de dados. Após a exclusão
+         * bem-sucedida, limpa os campos de texto e exibe uma mensagem de
+         * sucesso. Se ocorrer uma exceção, exibe uma mensagem de erro
+         * correspondente. Finalmente, recarrega a tabela de amigos para
+         * refletir as alterações realizadas.
+         */
+        try {
+
+            // Variável para armazenar o ID do amigo a ser excluído
             int id = 0;
-            if(this.jTableAmigo.getSelectedRow() == -1){
+
+            // Verifica se um amigo foi selecionado na tabela para exclusão
+            if (this.jTableAmigo.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro Selecione um amigo para Apagar");
-            } else{
+            } else {
                 id = Integer.parseInt(this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 0).toString());
             }
+
+            // Exibe um diálogo de confirmação para garantir que o usuário deseja excluir o amigo selecionado
             int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse amigo?");
-            if(respostaUsuario == 0){
-                if(this.objetoAmigo.deleteAmigoBD(id)){
+            if (respostaUsuario == 0) {
+
+                // Remove o amigo do banco de dados e exibe uma mensagem de sucesso
+                if (this.objetoAmigo.deleteAmigoBD(id)) {
                     this.JTFNome.setText("");
                     this.JTFTelefone.setText("");
-                    
+
                     JOptionPane.showMessageDialog(rootPane, "Amigo apagado com sucesso!");
                 }
             }
+
+            // Imprime a lista atualizada de amigos no console (para fins de depuração)
             System.out.println(this.objetoAmigo.getMinhaLista().toString());
-        } catch(Mensagem erro){
+        } catch (Mensagem erro) {
+
+            // Captura e exibe uma mensagem de erro específica definida pelo usuário
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } finally {
+
+            // Recarrega a tabela de amigos, independentemente de qualquer exceção ocorrida
             carregaTabela();
         }
     }//GEN-LAST:event_JBApagarActionPerformed
 
     private void jTableAmigoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableAmigoMouseClicked
-if(this.jTableAmigo.getSelectedRow() != -1){
-        String nome = this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 1).toString();
-        String telefone = this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 2).toString();
-        
-        
-        this.JTFNome.setText(nome);
-        this.JTFTelefone.setText(telefone);
-        
-        }      
+        /**
+         * Atualiza os campos de texto com as informações do amigo selecionado
+         * na tabela. Este trecho de código é acionado quando o usuário
+         * seleciona um amigo na tabela. Verifica se algum amigo foi selecionado
+         * antes de prosseguir com a atualização dos campos de texto. Obtém o
+         * nome e o telefone do amigo selecionado na tabela e os define nos
+         * campos de texto correspondentes.
+         */
+        if (this.jTableAmigo.getSelectedRow() != -1) {// Verifica se algum amigo foi selecionado na tabela
+
+            // Obtém o nome e o telefone do amigo selecionado na tabela
+            String nome = this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 1).toString();
+            String telefone = this.jTableAmigo.getValueAt(this.jTableAmigo.getSelectedRow(), 2).toString();
+
+            // Define o nome e o telefone nos campos de texto correspondentes na interface gráfica
+            this.JTFNome.setText(nome);
+            this.JTFTelefone.setText(telefone);
+
+        }
     }//GEN-LAST:event_jTableAmigoMouseClicked
 
     private void JTFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTFNomeActionPerformed
-    
-   
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
-       /* try {
+ /* try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
@@ -285,8 +371,8 @@ if(this.jTableAmigo.getSelectedRow() != -1){
                 new FrmGerenciaAmigo().setVisible(true);
             }
         }); */
-      } 
-    
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBApagar;
