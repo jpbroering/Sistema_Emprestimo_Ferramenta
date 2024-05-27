@@ -1,10 +1,18 @@
 package visao;
 
+/**
+ * Classe que representa a janela do menu inicial da aplicação.
+ */
 public class FrmMenuInicial extends javax.swing.JFrame {
 
+    /**
+     * Construtor da classe FrmMenuInicial. Inicializa os componentes da
+     * interface gráfica.
+     */
     public FrmMenuInicial() {
         initComponents();
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -137,6 +145,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JMRegistraEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMRegistraEmprestimoActionPerformed
+
+    /**
+    * Cria uma nova instância do formulário FrmCadastroEmprestimo e o
+    * exibe.
+    */
         FrmCadastroEmprestimo janela = new FrmCadastroEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMRegistraEmprestimoActionPerformed
@@ -146,6 +159,10 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMRelátorioFerramentaActionPerformed
 
     private void JMGerenciarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarEmprestimoActionPerformed
+       
+    /**
+    * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o exibe.
+    */
         FrmGerenciarEmprestimo janela = new FrmGerenciarEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarEmprestimoActionPerformed
@@ -159,18 +176,26 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JmCadastrarFerramentaActionPerformed
 
     private void JmCadastrarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCadastrarAmigoActionPerformed
+       
+    /**
+    * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o exibe.
+    */
         FrmCadastroAmigo janela = new FrmCadastroAmigo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JmCadastrarAmigoActionPerformed
 
     private void JMFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMFerramentaActionPerformed
+       
+    /**
+    * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o exibe.
+    */
         FrmCadastroFerramenta janela = new FrmCadastroFerramenta();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMFerramentaActionPerformed
 
     private void JMGerenciarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarAmigoActionPerformed
-    FrmGerenciaAmigo janela = new FrmGerenciaAmigo();
-    janela.setVisible(rootPaneCheckingEnabled);// TODO add your handling code here:
+        FrmGerenciaAmigo janela = new FrmGerenciaAmigo();
+        janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarAmigoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
