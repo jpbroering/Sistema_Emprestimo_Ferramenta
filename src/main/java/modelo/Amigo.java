@@ -119,7 +119,13 @@ public class Amigo extends EstruturaBase {
     public Amigo carregaAmigoBD(int id) {
         return dao.carregaAmigoBD(id);
     }
-
+   
+    /**
+ * Verifica se um usuário é amigo de acordo com o seu ID.
+ * 
+ * @param id O ID do usuário a ser verificado.
+ * @return true se o usuário é um amigo; false caso contrário.
+ */
     public boolean verificaAmigo(int id) {
         return dao.verificaAmigo(id);
     }
