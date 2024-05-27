@@ -1,5 +1,10 @@
 # a3_solucoes_computacionais
 Este repositório se refere a A3 de soluções computacionais, cujo o sistema gerencia emprestimos de ferramentas
+
+# Config BD
+user: root
+password: Unisul@1520
+
 # Requisitos
 ## Requisitos funcionais
 
@@ -41,5 +46,3 @@ RNF003: O banco de dados usado será MySQL WorkBench 8.0 CE.
 RNF004: A agenda integrada que será utilizada é a do google.
 
 RNF005: O sistema operacional compatível é o Windows 10.
-
-
