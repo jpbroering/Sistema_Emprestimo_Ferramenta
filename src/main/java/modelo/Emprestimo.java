@@ -167,49 +167,57 @@ public class Emprestimo {
      * @return Verdadeiro se a inserção for bem-sucedida, falso caso contrário.
      */
     public boolean insertEmprestimoBD(int idFerramenta, int idAmigo, Date dataEmprestimo) {
-            int id = dao.maiorID() + 1;
-            Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo);
-            dao.insertEmprestimoBD(objeto);
-            return true;
+        int id = dao.maiorID() + 1;
+        Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo);
+        dao.insertEmprestimoBD(objeto);
+        return true;
     }
-    
+
     /**
      * Apaga um empréstimo do banco de dados.
-     * 
+     *
      * @param idEmprestimo O id do emprestimo a ser apagado.
      * @return Verdadeiro se a remoção for bem-sucedida, falso caso contrário.
      */
-    public boolean deleteEmprestimoBD(int idEmprestimo){
+    public boolean deleteEmprestimoBD(int idEmprestimo) {
         return dao.deleteEmprestimoBD(idEmprestimo);
     }
-    
+
     /**
-     * Atualiza o conteúdo de um emprestimo no banco de dados.
-     * 
-     * @param objeto do tipo Emprestimo.
-     * @return Verdadeiro se a atualização for bem-sucedida, falso caso contrário.
+     * Atualiza o conteúdo de um empréstimo no banco de dados.
+     *
+     * @param id O identificador do empréstimo.
+     * @param idFerramenta O identificador da ferramenta.
+     * @param idAmigo O identificador do amigo.
+     * @param dataEmprestimo A data do empréstimo.
+     * @param dataDevolucao A data de devolução.
+     * @return Verdadeiro se a atualização for bem-sucedida, falso caso
+     * contrário.
      */
-    public boolean updateEmprestimoBD(Emprestimo objeto){
+    public boolean updateEmprestimoBD(int id, int idFerramenta, int idAmigo, Date dataEmprestimo, Date dataDevolucao) {
+        Emprestimo objeto = new Emprestimo(id, idFerramenta, idAmigo, dataEmprestimo, dataDevolucao);
         return dao.updateEmprestimoBD(objeto);
     }
-    
+
     /**
      * Verifica se tem emprestimos pendentes vinculados ao idAmigo.
-     * 
+     *
      * @param idAmigo o ID do amigo a ser verificado.
-     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso
+     * contrário.
      */
-    public boolean verificaEmprestimoPendente(int idAmigo){
+    public boolean verificaEmprestimoPendente(int idAmigo) {
         return dao.verificaEmprestimoPendente(idAmigo);
     }
-    
+
     /**
      * Verifica se tem emprestimos pendentes vinculados a idFerramenta.
-     * 
+     *
      * @param idFerramenta o ID da ferramenta a ser verificada.
-     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso
+     * contrário.
      */
-    public boolean verificaFerramentaEmprestada(int idFerramenta){
+    public boolean verificaFerramentaEmprestada(int idFerramenta) {
         return dao.verificaFerramentaEmprestada(idFerramenta);
     }
 }
