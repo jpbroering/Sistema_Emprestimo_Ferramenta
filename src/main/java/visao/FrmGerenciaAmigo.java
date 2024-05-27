@@ -238,7 +238,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
 
             // Atualiza o amigo no banco de dados e exibe uma mensagem de sucesso
             if (this.objetoAmigo.updateAmigoBD(id, nome, telefone)) {
-                JOptionPane.showMessageDialog(rootPane, "Amigo autalizado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Amigo atualizado com Sucesso!");
 
                 // Limpa os campos de texto após a atualização bem-sucedida
                 this.JTFNome.setText("");
