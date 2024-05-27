@@ -2,7 +2,7 @@
 Este repositório se refere a A3 de soluções computacionais, cujo o sistema gerencia emprestimos de ferramentas
 
 # Config BD
-user: root
+user: root <br>
 password: Unisul@1520
 
 # Requisitos
