@@ -15,7 +15,8 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
     private Emprestimo objetoEmprestimo; // Objeto que representa um empréstimo.
 
     /**
-     * Construtor da classe. Inicializa os componentes e carrega os dados na tabela.
+     * Construtor da classe. Inicializa os componentes e carrega os dados na
+     * tabela.
      */
     public FrmGerenciarEmprestimo() {
         initComponents(); // Inicializa os componentes da interface gráfica.
@@ -43,7 +44,7 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
 
     /**
      * Transforma um objeto Date em uma string formatada.
-     * 
+     *
      * @param data Data a ser formatada.
      * @return String formatada ou uma string vazia se a data for nula.
      */
@@ -248,7 +249,7 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
         try {
             int id = 0;
-            
+
             // Verifica se uma linha da tabela está selecionada.
             if (this.JTEmprestimo.getSelectedRow() == -1) {
                 // Lança uma exceção personalizada caso nenhuma linha esteja selecionada.
@@ -257,14 +258,14 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
                 // Obtém o ID do empréstimo da linha selecionada na tabela.
                 id = Integer.parseInt(this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 0).toString());
             }
-            
+
             // Exibe uma caixa de diálogo de confirmação para o usuário.
             int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse Emprestimo?");
-            
+
             // Verifica se o usuário confirmou a exclusão.
-            if(respostaUsuario == 0){
+            if (respostaUsuario == 0) {
                 // Tenta apagar o empréstimo do banco de dados.
-                if(this.objetoEmprestimo.deleteEmprestimoBD(id)){
+                if (this.objetoEmprestimo.deleteEmprestimoBD(id)) {
                     // Limpa os campos de texto na interface.
                     this.JTFIdAmigo.setText("");
                     this.JTFIdFerramenta.setText("");

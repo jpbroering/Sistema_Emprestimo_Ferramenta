@@ -178,7 +178,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
             } else {
                 dataOrdenada = this.JTFdataDiaEmp.getText().split("/");
                 dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[0])-1900,Integer.parseInt(dataOrdenada[1])-1,Integer.parseInt(dataOrdenada[2]));
-                System.out.println(dataDiaEmp);
             }
 
             // Insere o empréstimo no banco de dados e exibe uma mensagem de sucesso
