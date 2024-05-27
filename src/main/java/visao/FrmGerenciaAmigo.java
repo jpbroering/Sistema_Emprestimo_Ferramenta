@@ -293,15 +293,19 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
             int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse amigo?");
             if (respostaUsuario == 0) {
 
-                // Remove o amigo do banco de dados e exibe uma mensagem de sucesso
-                if (this.objetoAmigo.deleteAmigoBD(id)) {
-                    this.JTFNome.setText("");
-                    this.JTFTelefone.setText("");
+                if (this.objetoAmigo.verificaAmigo(id)) {
+                    JOptionPane.showMessageDialog(rootPane, "Este amigo possuí emprestimos vinculados, primeiro apague esses emprestimos para poder apagar o amigo!");
+                } else {
 
-                    JOptionPane.showMessageDialog(rootPane, "Amigo apagado com sucesso!");
+                    // Remove o amigo do banco de dados e exibe uma mensagem de sucesso
+                    if (this.objetoAmigo.deleteAmigoBD(id)) {
+                        this.JTFNome.setText("");
+                        this.JTFTelefone.setText("");
+
+                        JOptionPane.showMessageDialog(rootPane, "Amigo apagado com sucesso!");
+                    }
                 }
             }
-
             // Imprime a lista atualizada de amigos no console (para fins de depuração)
             System.out.println(this.objetoAmigo.getMinhaLista().toString());
         } catch (Mensagem erro) {
