@@ -8,14 +8,21 @@ import modelo.Emprestimo;
 
 public class FrmDevolucaoEmprestimo extends javax.swing.JFrame {
 
-    private Emprestimo objetoEmprestimo;
+    private Emprestimo objetoEmprestimo; // Objeto que representa um empréstimo.
 
+    /**
+     * Construtor da classe. Inicializa os componentes e carrega os dados na
+     * tabela.
+     */
     public FrmDevolucaoEmprestimo() {
         initComponents();
         objetoEmprestimo = new Emprestimo();
         carregaTabela();
     }
 
+    /**
+     * Carrega os dados de empréstimos na tabela.
+     */
     public void carregaTabela() {
         DefaultTableModel modelo = (DefaultTableModel) JTEmprestimo.getModel(); // Obtém o modelo da tabela.
         modelo.setNumRows(0); // Limpa a tabela.
@@ -147,43 +154,44 @@ public class FrmDevolucaoEmprestimo extends javax.swing.JFrame {
     private void JTEmprestimoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JTEmprestimoMouseClicked
         if (this.JTEmprestimo.getSelectedRow() != -1) {
             // Declaração de variáveis para armazenar os dados da linha selecionada.
-            String id,dataDevolucao;
+            String id, dataDevolucao;
 
             // Obtém os valores das colunas da linha selecionada na tabela.
             dataDevolucao = this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 2).toString();
-            id =this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 0).toString();
-            
+            id = this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 0).toString();
+
             // Preenche os campos de texto com os valores obtidos da tabela.
             this.JFTFDataDevolucao.setText(dataDevolucao);
-            this.JLId.setText("ID: "+id);
+            this.JLId.setText("ID: " + id);
         }
     }//GEN-LAST:event_JTEmprestimoMouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // Fecha a janela atual
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
+        try {
             int id = 0;
             int idAmigo = 0;
             int idFerramenta = 0;
             Date dataDiaEmp;
             Date dataDiaDev;
             String[] dataOrdenada = new String[3];
-            
+
             // Verifica se uma linha da tabela está selecionada.
             if (this.JTEmprestimo.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro selecione um Emprestimo para editar");
             } else {
-                // Obtém o ID do empréstimo da linha selecionada na tabela.
+                // Obtém os dados do empréstimo da linha selecionada na tabela.
                 id = Integer.parseInt(this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 0).toString());
                 idAmigo = Integer.parseInt(this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 3).toString());
-                idFerramenta =Integer.parseInt(this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 4).toString());
+                idFerramenta = Integer.parseInt(this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 4).toString());
                 dataOrdenada = this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 1).toString().split("-");
                 dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[0]) - 1900, Integer.parseInt(dataOrdenada[1]) - 1, Integer.parseInt(dataOrdenada[2]));
             }
-            
+
             // Verifica se o campo da data de devolução foi preenchido corretamente
             if (this.JFTFDataDevolucao.getText().split("-").length != 3 && this.JFTFDataDevolucao.getText() != "") {
                 throw new Mensagem("O dia deve estar formatado em yyyy-MM-dd");
@@ -192,21 +200,24 @@ public class FrmDevolucaoEmprestimo extends javax.swing.JFrame {
                 if (this.JFTFDataDevolucao.getText() == "") {
                     throw new Mensagem("Digite uma data");
                 } else {
+                    // Converte a data de devolução para o formato Date
                     dataOrdenada = this.JFTFDataDevolucao.getText().split("-");
                     dataDiaDev = new Date(Integer.parseInt(dataOrdenada[0]) - 1900, Integer.parseInt(dataOrdenada[1]) - 1, Integer.parseInt(dataOrdenada[2]));
-                    if(dataDiaEmp.compareTo(dataDiaDev) > 0){
+
+                    // Verifica se adata de devolução está depois da data de criação do emprestimo
+                    if (dataDiaEmp.compareTo(dataDiaDev) > 0) {
                         throw new Mensagem("Digite uma data posterior a data de criação do emprestimo");
+                    } else {
+                        // Atualiza o empréstimo no banco de dados e exibe uma mensagem de sucesso
+                        if (this.objetoEmprestimo.updateEmprestimoBD(id, idFerramenta, idAmigo, dataDiaEmp, dataDiaDev)) {
+                            JOptionPane.showMessageDialog(rootPane, "Devolução registrada com Sucesso!");
+                            // Limpa os campos de texto na interface
+                            this.JFTFDataDevolucao.setText("");
+                        }
                     }
                 }
             }
-            
-            // Atualiza o empréstimo no banco de dados e exibe uma mensagem de sucesso
-            if (this.objetoEmprestimo.updateEmprestimoBD(id, idFerramenta, idAmigo, dataDiaEmp, dataDiaDev)) {
-                JOptionPane.showMessageDialog(rootPane, "Emprestimo atualizado com Sucesso!");
-                // Limpa os campos de texto na interface
-                this.JFTFDataDevolucao.setText("");
-            }
-        } catch(Mensagem erro) {
+        } catch (Mensagem erro) {
             // Exibe uma mensagem de erro caso a exceção personalizada seja lançada.
             JOptionPane.showMessageDialog(rootPane, erro.getMessage());
         } finally {
