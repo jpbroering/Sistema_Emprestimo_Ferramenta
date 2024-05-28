@@ -119,11 +119,6 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
         jLabel5.setText("ferramenta:");
 
         JFTFDataEmprestimo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
-        JFTFDataEmprestimo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JFTFDataEmprestimoActionPerformed(evt);
-            }
-        });
 
         JFTFDataDevolucao.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
@@ -209,7 +204,6 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(JTFIdFerramenta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JBRemover)
                     .addComponent(JBEditar)
@@ -241,10 +235,6 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
             this.JTFIdFerramenta.setText(idFerramenta);
         }
     }//GEN-LAST:event_JTEmprestimoMouseClicked
-
-    private void JFTFDataEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JFTFDataEmprestimoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JFTFDataEmprestimoActionPerformed
 
     private void JBRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBRemoverActionPerformed
         try {

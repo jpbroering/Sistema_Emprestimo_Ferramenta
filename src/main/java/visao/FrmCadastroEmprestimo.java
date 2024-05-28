@@ -36,18 +36,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JTFIdferramenta.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFIdferramentaActionPerformed(evt);
-            }
-        });
-
-        JTFIdamigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFIdamigoActionPerformed(evt);
-            }
-        });
-
         jLabel1.setText("Id amigo:");
 
         jLabel2.setText("Id ferramenta:");
@@ -69,11 +57,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
         });
 
         JTFdataDiaEmp.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy/MM/dd"))));
-        JTFdataDiaEmp.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFdataDiaEmpActionPerformed(evt);
-            }
-        });
 
         JBPreencheData.setText("Auto preencher");
         JBPreencheData.addActionListener(new java.awt.event.ActionListener() {
@@ -134,14 +117,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void JTFIdferramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFIdferramentaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFIdferramentaActionPerformed
-
-    private void JTFIdamigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFIdamigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFIdamigoActionPerformed
 
     private void JBCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCancelarActionPerformed
         this.dispose();
@@ -206,10 +181,6 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Imforme um número válido");
         }
     }//GEN-LAST:event_JBCadastrarActionPerformed
-
-    private void JTFdataDiaEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFdataDiaEmpActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFdataDiaEmpActionPerformed
 
     private void JBPreencheDataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBPreencheDataActionPerformed
         long data = System.currentTimeMillis();

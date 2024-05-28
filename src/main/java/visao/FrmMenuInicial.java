@@ -146,10 +146,10 @@ public class FrmMenuInicial extends javax.swing.JFrame {
 
     private void JMRegistraEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMRegistraEmprestimoActionPerformed
 
-    /**
-    * Cria uma nova instância do formulário FrmCadastroEmprestimo e o
-    * exibe.
-    */
+        /**
+         * Cria uma nova instância do formulário FrmCadastroEmprestimo e o
+         * exibe.
+         */
         FrmCadastroEmprestimo janela = new FrmCadastroEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMRegistraEmprestimoActionPerformed
@@ -159,10 +159,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMRelátorioFerramentaActionPerformed
 
     private void JMGerenciarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarEmprestimoActionPerformed
-       
-    /**
-    * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o exibe.
-    */
+
+        /**
+         * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o
+         * exibe.
+         */
         FrmGerenciarEmprestimo janela = new FrmGerenciarEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarEmprestimoActionPerformed
@@ -176,19 +177,21 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JmCadastrarFerramentaActionPerformed
 
     private void JmCadastrarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCadastrarAmigoActionPerformed
-       
-    /**
-    * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o exibe.
-    */
+
+        /**
+         * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o
+         * exibe.
+         */
         FrmCadastroAmigo janela = new FrmCadastroAmigo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JmCadastrarAmigoActionPerformed
 
     private void JMFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMFerramentaActionPerformed
-       
-    /**
-    * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o exibe.
-    */
+
+        /**
+         * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o
+         * exibe.
+         */
         FrmCadastroFerramenta janela = new FrmCadastroFerramenta();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMFerramentaActionPerformed

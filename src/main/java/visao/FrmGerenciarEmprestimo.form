@@ -97,7 +97,6 @@
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="JBRemover" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="JBEditar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -164,9 +163,6 @@
           <Format format="yyyy-MM-dd" subtype="-1" type="1"/>
         </Property>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JFTFDataEmprestimoActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JFormattedTextField" name="JFTFDataDevolucao">
       <Properties>
