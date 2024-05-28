@@ -2,6 +2,7 @@ package modelo;
 
 import java.sql.Date;
 import dao.EmprestimoDAO;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -219,5 +220,20 @@ public class Emprestimo {
      */
     public boolean verificaFerramentaEmprestada(int idFerramenta) {
         return dao.verificaFerramentaEmprestada(idFerramenta);
+    }
+    
+    /**
+         * Transforma um objeto Date em uma string formatada.
+         *
+         * @param data Data a ser formatada.
+         * @return String formatada ou uma string vazia se a data for nula.
+         */
+    public String transformaData(Date data) {
+        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); // Define o formato da data.
+        if (data != null) {
+            return formato.format(data); // Retorna a data formatada.
+        } else {
+            return ""; // Retorna uma string vazia se a data for nula.
+        }
     }
 }
