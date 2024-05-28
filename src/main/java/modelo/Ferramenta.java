@@ -89,7 +89,7 @@ public class Ferramenta extends EstruturaBase {
      * @param custo o custo da ferramenta
      * @return true se a inserção for bem-sucedida
      */
-    public boolean InsertFerramentaBD(String nome, String marca, float custo) {
+    public boolean insertFerramentaBD(String nome, String marca, float custo) {
         int id = dao.maiorID() + 1;
         Ferramenta objeto = new Ferramenta(id, nome, marca, custo);
         dao.insertFerramentaBD(objeto);
