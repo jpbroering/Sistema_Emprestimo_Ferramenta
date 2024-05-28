@@ -76,7 +76,7 @@ public class Amigo extends EstruturaBase {
      * @param telefone o telefone do amigo
      * @return true se a inserção for bem-sucedida
      */
-    public boolean InsertAmigoBD(String nome, String telefone) {
+    public boolean insertAmigoBD(String nome, String telefone) {
         int id = dao.maiorID() + 1;
 
         Amigo objeto = new Amigo(id, nome, telefone);
