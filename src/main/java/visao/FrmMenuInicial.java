@@ -17,47 +17,27 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuBar2 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
-        jMenu4 = new javax.swing.JMenu();
-        jSeparator1 = new javax.swing.JSeparator();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
-        JmCadastrarFerramenta = new javax.swing.JMenu();
+        JMCadastrar = new javax.swing.JMenu();
         JMFerramenta = new javax.swing.JMenuItem();
         JmCadastrarAmigo = new javax.swing.JMenuItem();
         JMRegistraEmprestimo = new javax.swing.JMenuItem();
-        JMGerenciarFerramenta = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        JMGerenciar = new javax.swing.JMenu();
+        JMGerenciarFerramenta = new javax.swing.JMenuItem();
         JMGerenciarAmigo = new javax.swing.JMenuItem();
         JMGerenciarEmprestimo = new javax.swing.JMenuItem();
-        jMenu5 = new javax.swing.JMenu();
+        JMRelatorio = new javax.swing.JMenu();
         JMRelátorioFerramenta = new javax.swing.JMenuItem();
         JMRelatorioEmprestimo = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        JMDevolucao = new javax.swing.JMenu();
         JMDevEmprestimo = new javax.swing.JMenuItem();
-
-        jMenuItem1.setText("jMenuItem1");
-
-        jMenu1.setText("File");
-        jMenuBar2.add(jMenu1);
-
-        jMenu3.setText("Edit");
-        jMenuBar2.add(jMenu3);
-
-        jMenu4.setText("jMenu4");
-
-        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        JmCadastrarFerramenta.setText("Cadastrar");
-        JmCadastrarFerramenta.addActionListener(new java.awt.event.ActionListener() {
+        JMCadastrar.setText("Cadastrar");
+        JMCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JmCadastrarFerramentaActionPerformed(evt);
+                JMCadastrarActionPerformed(evt);
             }
         });
 
@@ -67,7 +47,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
                 JMFerramentaActionPerformed(evt);
             }
         });
-        JmCadastrarFerramenta.add(JMFerramenta);
+        JMCadastrar.add(JMFerramenta);
 
         JmCadastrarAmigo.setText("Cadastrar Amigo");
         JmCadastrarAmigo.addActionListener(new java.awt.event.ActionListener() {
@@ -75,7 +55,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
                 JmCadastrarAmigoActionPerformed(evt);
             }
         });
-        JmCadastrarFerramenta.add(JmCadastrarAmigo);
+        JMCadastrar.add(JmCadastrarAmigo);
 
         JMRegistraEmprestimo.setText("Cadastrar Emprestimo");
         JMRegistraEmprestimo.addActionListener(new java.awt.event.ActionListener() {
@@ -83,19 +63,19 @@ public class FrmMenuInicial extends javax.swing.JFrame {
                 JMRegistraEmprestimoActionPerformed(evt);
             }
         });
-        JmCadastrarFerramenta.add(JMRegistraEmprestimo);
+        JMCadastrar.add(JMRegistraEmprestimo);
 
-        jMenuBar1.add(JmCadastrarFerramenta);
+        jMenuBar1.add(JMCadastrar);
 
-        JMGerenciarFerramenta.setText("Gerenciar");
+        JMGerenciar.setText("Gerenciar");
 
-        jMenuItem2.setText("Gerenciar Ferramentas");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+        JMGerenciarFerramenta.setText("Gerenciar Ferramentas");
+        JMGerenciarFerramenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
+                JMGerenciarFerramentaActionPerformed(evt);
             }
         });
-        JMGerenciarFerramenta.add(jMenuItem2);
+        JMGerenciar.add(JMGerenciarFerramenta);
 
         JMGerenciarAmigo.setText("Gerenciar Amigos");
         JMGerenciarAmigo.addActionListener(new java.awt.event.ActionListener() {
@@ -103,7 +83,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
                 JMGerenciarAmigoActionPerformed(evt);
             }
         });
-        JMGerenciarFerramenta.add(JMGerenciarAmigo);
+        JMGerenciar.add(JMGerenciarAmigo);
 
         JMGerenciarEmprestimo.setText("Gerenciar Emprestimos");
         JMGerenciarEmprestimo.addActionListener(new java.awt.event.ActionListener() {
@@ -111,11 +91,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
                 JMGerenciarEmprestimoActionPerformed(evt);
             }
         });
-        JMGerenciarFerramenta.add(JMGerenciarEmprestimo);
+        JMGerenciar.add(JMGerenciarEmprestimo);
 
-        jMenuBar1.add(JMGerenciarFerramenta);
+        jMenuBar1.add(JMGerenciar);
 
-        jMenu5.setText("Relatorios");
+        JMRelatorio.setText("Relatorios");
 
         JMRelátorioFerramenta.setText("Relátorio de Ferramentas");
         JMRelátorioFerramenta.addActionListener(new java.awt.event.ActionListener() {
@@ -123,17 +103,14 @@ public class FrmMenuInicial extends javax.swing.JFrame {
                 JMRelátorioFerramentaActionPerformed(evt);
             }
         });
-        jMenu5.add(JMRelátorioFerramenta);
+        JMRelatorio.add(JMRelátorioFerramenta);
 
         JMRelatorioEmprestimo.setText("Relátorio de Emprestimos");
-        jMenu5.add(JMRelatorioEmprestimo);
+        JMRelatorio.add(JMRelatorioEmprestimo);
 
-        jMenuItem3.setText("Relátorio de Amigos");
-        jMenu5.add(jMenuItem3);
+        jMenuBar1.add(JMRelatorio);
 
-        jMenuBar1.add(jMenu5);
-
-        jMenu2.setText("Devolução");
+        JMDevolucao.setText("Devolução");
 
         JMDevEmprestimo.setText("Devolução de emprestimo");
         JMDevEmprestimo.addActionListener(new java.awt.event.ActionListener() {
@@ -141,9 +118,9 @@ public class FrmMenuInicial extends javax.swing.JFrame {
                 JMDevEmprestimoActionPerformed(evt);
             }
         });
-        jMenu2.add(JMDevEmprestimo);
+        JMDevolucao.add(JMDevEmprestimo);
 
-        jMenuBar1.add(jMenu2);
+        jMenuBar1.add(JMDevolucao);
 
         setJMenuBar(jMenuBar1);
 
@@ -185,13 +162,13 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarEmprestimoActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+    private void JMGerenciarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarFerramentaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
+    }//GEN-LAST:event_JMGerenciarFerramentaActionPerformed
 
-    private void JmCadastrarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCadastrarFerramentaActionPerformed
+    private void JMCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMCadastrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JmCadastrarFerramentaActionPerformed
+    }//GEN-LAST:event_JMCadastrarActionPerformed
 
     private void JmCadastrarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JmCadastrarAmigoActionPerformed
 
@@ -224,27 +201,19 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMDevEmprestimoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu JMCadastrar;
     private javax.swing.JMenuItem JMDevEmprestimo;
+    private javax.swing.JMenu JMDevolucao;
     private javax.swing.JMenuItem JMFerramenta;
+    private javax.swing.JMenu JMGerenciar;
     private javax.swing.JMenuItem JMGerenciarAmigo;
     private javax.swing.JMenuItem JMGerenciarEmprestimo;
-    private javax.swing.JMenu JMGerenciarFerramenta;
+    private javax.swing.JMenuItem JMGerenciarFerramenta;
     private javax.swing.JMenuItem JMRegistraEmprestimo;
+    private javax.swing.JMenu JMRelatorio;
     private javax.swing.JMenuItem JMRelatorioEmprestimo;
     private javax.swing.JMenuItem JMRelátorioFerramenta;
     private javax.swing.JMenuItem JmCadastrarAmigo;
-    private javax.swing.JMenu JmCadastrarFerramenta;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
