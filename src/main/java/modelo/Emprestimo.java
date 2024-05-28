@@ -15,7 +15,7 @@ public class Emprestimo {
     private int idAmigo;
     private Date dataEmprestimo;
     private Date dataDevolucao;
-    EmprestimoDAO dao;
+    private EmprestimoDAO dao;
 
     /**
      * Construtor padrão da classe Emprestimo. Inicializa todos os campos com
