@@ -23,6 +23,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
         jSeparator1 = new javax.swing.JSeparator();
+        jMenuItem4 = new javax.swing.JMenuItem();
         jMenuBar1 = new javax.swing.JMenuBar();
         JmCadastrarFerramenta = new javax.swing.JMenu();
         JMFerramenta = new javax.swing.JMenuItem();
@@ -36,6 +37,8 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JMRelátorioFerramenta = new javax.swing.JMenuItem();
         JMRelatorioEmprestimo = new javax.swing.JMenuItem();
         jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        JMDevEmprestimo = new javax.swing.JMenuItem();
 
         jMenuItem1.setText("jMenuItem1");
 
@@ -46,6 +49,8 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         jMenuBar2.add(jMenu3);
 
         jMenu4.setText("jMenu4");
+
+        jMenuItem4.setText("jMenuItem4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -128,6 +133,18 @@ public class FrmMenuInicial extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu5);
 
+        jMenu2.setText("Devolução");
+
+        JMDevEmprestimo.setText("Devolução de emprestimo");
+        JMDevEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMDevEmprestimoActionPerformed(evt);
+            }
+        });
+        jMenu2.add(JMDevEmprestimo);
+
+        jMenuBar1.add(jMenu2);
+
         setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -201,7 +218,13 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarAmigoActionPerformed
 
+    private void JMDevEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMDevEmprestimoActionPerformed
+        FrmDevolucaoEmprestimo janela = new FrmDevolucaoEmprestimo();
+        janela.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_JMDevEmprestimoActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem JMDevEmprestimo;
     private javax.swing.JMenuItem JMFerramenta;
     private javax.swing.JMenuItem JMGerenciarAmigo;
     private javax.swing.JMenuItem JMGerenciarEmprestimo;
@@ -212,6 +235,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem JmCadastrarAmigo;
     private javax.swing.JMenu JmCadastrarFerramenta;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenu jMenu5;
@@ -220,6 +244,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JSeparator jSeparator1;
     // End of variables declaration//GEN-END:variables
 }
