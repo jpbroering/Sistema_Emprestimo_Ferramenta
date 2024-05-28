@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class Amigo extends EstruturaBase {
 
     private String telefone;
-    AmigoDAO dao;
+    private AmigoDAO dao;
 
     /**
      * Construtor padrão que inicializa um objeto Amigo com valores padrão.
