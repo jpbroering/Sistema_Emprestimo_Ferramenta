@@ -34,26 +34,11 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
         for (Emprestimo a : listaEmprestimo) {
             modelo.addRow(new Object[]{
                 a.getId(), // Adiciona o ID do empréstimo.
-                transformaData(a.getDataEmprestimo()), // Formata e adiciona a data de empréstimo.
-                transformaData(a.getDataDevolucao()), // Formata e adiciona a data de devolução.
+                objetoEmprestimo.transformaData(a.getDataEmprestimo()), // Formata e adiciona a data de empréstimo.
+                objetoEmprestimo.transformaData(a.getDataDevolucao()), // Formata e adiciona a data de devolução.
                 a.getIdAmigo(), // Adiciona o ID do amigo.
                 a.getIdFerramenta() // Adiciona o ID da ferramenta.
             });
-        }
-    }
-
-    /**
-     * Transforma um objeto Date em uma string formatada.
-     *
-     * @param data Data a ser formatada.
-     * @return String formatada ou uma string vazia se a data for nula.
-     */
-    public String transformaData(Date data) {
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); // Define o formato da data.
-        if (data != null) {
-            return formato.format(data); // Retorna a data formatada.
-        } else {
-            return ""; // Retorna uma string vazia se a data for nula.
         }
     }
 
@@ -218,9 +203,6 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
         if (this.JTEmprestimo.getSelectedRow() != -1) {
             // Declaração de variáveis para armazenar os dados da linha selecionada.
             String id, dataCriacao, dataDevolucao, idAmigo, idFerramenta;
-
-            // Exibe no console o valor da segunda coluna da linha selecionada.
-            System.out.println(this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 1));
 
             // Obtém os valores das colunas da linha selecionada na tabela.
             dataCriacao = this.JTEmprestimo.getValueAt(this.JTEmprestimo.getSelectedRow(), 1).toString();
