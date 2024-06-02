@@ -22,15 +22,17 @@ RF005: O sistema deve permitir registrar a data de devolução prevista ou efeti
 RF006: O sistema deve, ao realizar um novo empréstimo, verificar se o amigo ainda possui ferramentas não devolvidas.
 e notificar caso positivo.
 
-RF007: O sistema deve permitir que o software tenha um relatório de ferramentas e o total ele gastou.
+RF007: O sistema deve permitir gerenciar e editar ferramentas, amigos e emprétimos depois de cadastrados.
 
-RF008: O sistema deve gerar um relatório que liste todos os empréstimos realizados e em andamento, incluindo quem fez mais emprestimo e quem nunca devolveu uma ferramenta.
+RF008: O sistema deve permitir que o software tenha um relatório de ferramentas e o total ele gastou.
+
+RF009: O sistema deve gerar um relatório que liste todos os empréstimos realizados e em andamento, incluindo quem fez mais emprestimo e quem nunca devolveu uma ferramenta.
 
 #### Não será implementado:
 
-RF009:O sistema deve permitir o registro de algum evento para os amigos cadastrados.
+RF0010:O sistema deve permitir o registro de algum evento para os amigos cadastrados.
 
-RF010: O sistema deve integrar com o calendario online para compartilhar o evento.
+RF011: O sistema deve integrar com o calendario online para compartilhar o evento.
 
 ### Requisitos não funcionais
 
