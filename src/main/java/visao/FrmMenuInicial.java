@@ -158,12 +158,13 @@ public class FrmMenuInicial extends javax.swing.JFrame {
          * Cria uma nova instância do formulário FrmGerenciarEmprestimo e o
          * exibe.
          */
-        FrmGerenciarEmprestimo janela = new FrmGerenciarEmprestimo();
+        FrmGerenciaEmprestimo janela = new FrmGerenciaEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarEmprestimoActionPerformed
 
     private void JMGerenciarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarFerramentaActionPerformed
-        // TODO add your handling code here:
+        FrmGerenciaFerramenta janela = new FrmGerenciaFerramenta();
+        janela.setVisible(true);
     }//GEN-LAST:event_JMGerenciarFerramentaActionPerformed
 
     private void JMCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMCadastrarActionPerformed
