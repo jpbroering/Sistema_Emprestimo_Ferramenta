@@ -59,7 +59,7 @@ public class Ferramenta extends EstruturaBase {
      *
      * @return o custo da ferramenta
      */
-    public double getCusto() {
+    public float getCusto() {
         return custo;
     }
 
@@ -94,5 +94,17 @@ public class Ferramenta extends EstruturaBase {
         Ferramenta objeto = new Ferramenta(id, nome, marca, custo);
         dao.insertFerramentaBD(objeto);
         return true;
+    }
+    public boolean deleteFerramentaBD(int id) {
+        dao.deleteFerramentaBD(id);
+        return true;
+    }
+    public boolean updateFerramentaBD(int id, String nome, String marca, float  custo) {
+        Ferramenta objeto = new Ferramenta(id, nome, marca, custo);
+        dao.updateFerramentaBD(objeto);
+        return true;
+    }
+    public boolean verificaFerramenta(int id) {
+        return dao.verificaFerramenta(id);
     }
 }
