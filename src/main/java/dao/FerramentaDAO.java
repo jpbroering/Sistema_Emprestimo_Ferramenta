@@ -95,4 +95,55 @@ public class FerramentaDAO extends BaseDAO {
             throw new RuntimeException(erro);
         }
     }
+    public boolean updateFerramentaBD(Ferramenta objeto) {
+        String sql = "UPDATE tb_Ferramenta SET nome = ?, marca = ?, custo = ? WHERE id_Ferramenta = ?";
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            stmt.setString(1, objeto.getNome());
+            stmt.setString(2, objeto.getMarca());
+            stmt.setFloat(3, objeto.getCusto());
+            stmt.setInt(4, objeto.getId());
+            stmt.executeUpdate();
+            stmt.close();
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+    public boolean deleteFerramentaBD(int id) {
+        String sql = "DELETE FROM tb_Ferramenta WHERE id_Ferramenta = ?";
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            stmt.setInt(1, id);
+            stmt.execute();
+            stmt.close();
+            return true;
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+            throw new RuntimeException(erro);
+        }
+    }
+     public boolean verificaFerramenta(int idFerramenta) {
+        String sql = "SELECT * FROM tb_emprestimo WHERE tb_Ferramenta_id_Ferramenta = ?";
+        try {
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            stmt.setInt(1, idFerramenta);
+            try (ResultSet res = stmt.executeQuery()) {
+                if (res.next()) {
+                    stmt.close();
+                    return true;
+                } else {
+                    stmt.close();
+                    return false;
+                }
+            }
+
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
+        }
+        return true;
+
+    }
+    
 }
