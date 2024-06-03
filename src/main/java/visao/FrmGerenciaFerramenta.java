@@ -233,25 +233,25 @@ private Ferramenta objetoFerramenta;
                marca = this.JTFMarca.getText();
             }
             if (Float.parseFloat(this.JTFCusto.getText()) < 0) {
-                throw new Mensagem(" Custo não ser ");
+                throw new Mensagem(" Custo não pode ser negativo ");
             } else {
                custo = Float.parseFloat(this.JTFCusto.getText());
             }
             // Verifica se um amigo foi selecionado na tabela para edição
             if (this.jTableFerramenta.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro selecione um amigo para editar");
+                throw new Mensagem("Primeiro selecione uma Ferramenta para editar");
             } else {
                 id = Integer.parseInt(this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 0).toString());
             }
 
             // Atualiza o amigo no banco de dados e exibe uma mensagem de sucesso
             if (this.objetoFerramenta.updateFerramentaBD(id, nome, marca, custo )) {
-                JOptionPane.showMessageDialog(rootPane, "Amigo atualizado com Sucesso!");
+                JOptionPane.showMessageDialog(rootPane, "Ferramenta atualizada com Sucesso!");
 
                 // Limpa os campos de texto após a atualização bem-sucedida
                 this.JTFNome.setText("");
                 this.JTFCusto.setText("");
-
+                this.JTFMarca.setText("");
             }
 
             // Imprime a lista atualizada de amigos no console (para fins de depuração)
