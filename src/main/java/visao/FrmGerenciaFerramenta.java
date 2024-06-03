@@ -292,17 +292,17 @@ private Ferramenta objetoFerramenta;
 
             // Verifica se um amigo foi selecionado na tabela para exclusão
             if (this.jTableFerramenta.getSelectedRow() == -1) {
-                throw new Mensagem("Primeiro Selecione um amigo para Apagar");
+                throw new Mensagem("Primeiro Selecione uma Ferramenta para Apagar");
             } else {
                 id = Integer.parseInt(this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 0).toString());
             }
 
             // Exibe um diálogo de confirmação para garantir que o usuário deseja excluir o amigo selecionado
-            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar esse amigo?");
+            int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar essa Ferramenta?");
             if (respostaUsuario == 0) {
 
                 if (this.objetoFerramenta.verificaFerramenta(id)) {
-                    JOptionPane.showMessageDialog(rootPane, "Este amigo possuí emprestimos vinculados, primeiro apague esses emprestimos para poder apagar o amigo!");
+                    JOptionPane.showMessageDialog(rootPane, "Esta Ferramenta possuí emprestimos vinculados, primeiro apague esses emprestimos para poder apagar a Ferramenta!");
                 } else {
 
                     // Remove o amigo do banco de dados e exibe uma mensagem de sucesso
@@ -310,7 +310,7 @@ private Ferramenta objetoFerramenta;
                         this.JTFNome.setText("");
                         this.JTFCusto.setText("");
 
-                        JOptionPane.showMessageDialog(rootPane, "Amigo apagado com sucesso!");
+                        JOptionPane.showMessageDialog(rootPane, "Ferramenta apagada com sucesso!");
                     }
                 }
             }
