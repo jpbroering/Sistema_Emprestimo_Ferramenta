@@ -340,12 +340,13 @@ private Ferramenta objetoFerramenta;
 
             // Obtém o nome e o telefone do amigo selecionado na tabela
             String nome = this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 1).toString();
-            String telefone = this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 2).toString();
+            String marca = this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 2).toString();
+            String custo = this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 3).toString();
 
             // Define o nome e o telefone nos campos de texto correspondentes na interface gráfica
             this.JTFNome.setText(nome);
-            this.JTFCusto.setText(telefone);
-
+            this.JTFCusto.setText(custo);
+            this.JTFMarca.setText(marca);
         }
     }//GEN-LAST:event_jTableFerramentaMouseClicked
 
