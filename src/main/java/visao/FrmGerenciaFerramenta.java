@@ -1,4 +1,3 @@
-
 package visao;
 
 import java.util.ArrayList;
@@ -6,20 +5,21 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Ferramenta;
 
-
 public class FrmGerenciaFerramenta extends javax.swing.JFrame {
-private Ferramenta objetoFerramenta;
+
+    private Ferramenta objetoFerramenta;
+
     public FrmGerenciaFerramenta() {
-       
+
         initComponents();
-    objetoFerramenta = new Ferramenta();
-    carregaTabela();
-    
+        objetoFerramenta = new Ferramenta();
+        carregaTabela();
+
     }
-    
-/**
-     * Método para carregar os dados dos amigos na tabela. Obtém a referência ao
-     * modelo da tabela, limpa suas linhas e preenche com os dados dos amigos
+
+    /**
+     * Método para carregar os dados das Ferramentas na tabela. Obtém a referência ao
+     * modelo da tabela, limpa suas linhas e preenche com os dados das Ferramentas
      * presentes na lista.
      */
     public void carregaTabela() {
@@ -30,10 +30,10 @@ private Ferramenta objetoFerramenta;
         // Limpa todas as linhas do modelo
         modelo.setNumRows(0);
 
-        // Obtém a lista de amigos
+        // Obtém a lista de ferramentas
         ArrayList<Ferramenta> minhaLista = objetoFerramenta.getMinhaLista();
 
-        // Para cada amigo na lista, adiciona uma nova linha na tabela
+        // Para cada ferramenta na lista, adiciona uma nova linha na tabela
         for (Ferramenta a : minhaLista) {
             modelo.addRow(new Object[]{
                 a.getId(),
@@ -42,7 +42,7 @@ private Ferramenta objetoFerramenta;
                 a.getCusto()});
         }
     }
-  
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -117,19 +117,7 @@ private Ferramenta objetoFerramenta;
 
         jLabel1.setText("Nome:");
 
-        JTFNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFNomeActionPerformed(evt);
-            }
-        });
-
         jLabel2.setText("Custo");
-
-        JTFMarca.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTFMarcaActionPerformed(evt);
-            }
-        });
 
         jLabel3.setText("Marca");
 
@@ -201,19 +189,19 @@ private Ferramenta objetoFerramenta;
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
 
         /**
-        * Método para atualizar um amigo existente. Este método é acionado
-        * quando o usuário tenta atualizar as informações de um amigo na
-        * interface gráfica. Verifica se o nome e o número de telefone são
-        * válidos. Selecione um amigo na tabela antes de editar. Atualiza o
-        * amigo no banco de dados e limpa os campos de texto após a atualização
-        * bem-sucedida. Lança e trata exceções para erros específicos, como
-        * nome curto, número de telefone ausente ou seleção de amigo não
-        * realizada. Se ocorrer uma exceção, exibe uma mensagem de erro
-        * correspondente. Finalmente, recarrega a tabela de amigos para
-        * refletir as alterações realizadas.
-        */
+         * Método para atualizar uma ferramenta existente. Este método é acionado
+         * quando o usuário tenta atualizar as informações de uma ferramenta na
+         * interface gráfica. Verifica se o nome e o número de telefone são
+         * válidos. Selecione uma ferramenta na tabela antes de editar. Atualiza a
+         * ferramenta no banco de dados e limpa os campos de texto após a atualização
+         * bem-sucedida. Lança e trata exceções para erros específicos, como
+         * nome curto, número de telefone ausente ou seleção de ferramenta não
+         * realizada. Se ocorrer uma exceção, exibe uma mensagem de erro
+         * correspondente. Finalmente, recarrega a tabela de ferramentas para
+         * refletir as alterações realizadas.
+         */
         try {
-            // Variáveis para armazenar os dados do amigo
+            // Variáveis para armazenar os dados das ferramentas
             int id = 0;
             String nome = "";
             String marca = "";
@@ -230,22 +218,22 @@ private Ferramenta objetoFerramenta;
             if (this.JTFMarca.getText().length() < 2) {
                 throw new Mensagem(" Marca deve conter pelo menos 2 caracteres");
             } else {
-               marca = this.JTFMarca.getText();
+                marca = this.JTFMarca.getText();
             }
             if (Float.parseFloat(this.JTFCusto.getText()) < 0) {
                 throw new Mensagem(" Custo não pode ser negativo ");
             } else {
-               custo = Float.parseFloat(this.JTFCusto.getText());
+                custo = Float.parseFloat(this.JTFCusto.getText());
             }
-            // Verifica se um amigo foi selecionado na tabela para edição
+            // Verifica se uma ferramenta foi selecionado na tabela para edição
             if (this.jTableFerramenta.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro selecione uma Ferramenta para editar");
             } else {
                 id = Integer.parseInt(this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 0).toString());
             }
 
-            // Atualiza o amigo no banco de dados e exibe uma mensagem de sucesso
-            if (this.objetoFerramenta.updateFerramentaBD(id, nome, marca, custo )) {
+            // Atualiza a ferramenta no banco de dados e exibe uma mensagem de sucesso
+            if (this.objetoFerramenta.updateFerramentaBD(id, nome, marca, custo)) {
                 JOptionPane.showMessageDialog(rootPane, "Ferramenta atualizada com Sucesso!");
 
                 // Limpa os campos de texto após a atualização bem-sucedida
@@ -254,7 +242,7 @@ private Ferramenta objetoFerramenta;
                 this.JTFMarca.setText("");
             }
 
-            // Imprime a lista atualizada de amigos no console (para fins de depuração)
+            // Imprime a lista atualizada de ferramentas no console (para fins de depuração)
             System.out.println(this.objetoFerramenta.getMinhaLista().toString());
         } catch (Mensagem erro) {
 
@@ -266,7 +254,7 @@ private Ferramenta objetoFerramenta;
             JOptionPane.showMessageDialog(null, "Imforme um número válido");
         } finally {
 
-            // Recarrega a tabela de amigos, independentemente de qualquer exceção ocorrida
+            // Recarrega a tabela de ferramenta, independentemente de qualquer exceção ocorrida
             carregaTabela();
         }
     }//GEN-LAST:event_JBEditarActionPerformed
@@ -274,30 +262,30 @@ private Ferramenta objetoFerramenta;
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
 
         /**
-        * Método para excluir um amigo existente. Este método é acionado quando
-        * o usuário tenta excluir um amigo na interface gráfica. Verifica se um
-        * amigo foi selecionado na tabela antes de prosseguir com a exclusão.
-        * Exibe um diálogo de confirmação para garantir que o usuário deseja
-        * realmente excluir o amigo selecionado. Se o usuário confirmar a
-        * exclusão, o amigo é removido do banco de dados. Após a exclusão
-        * bem-sucedida, limpa os campos de texto e exibe uma mensagem de
-        * sucesso. Se ocorrer uma exceção, exibe uma mensagem de erro
-        * correspondente. Finalmente, recarrega a tabela de amigos para
-        * refletir as alterações realizadas.
-        */
+         * Método para excluir uma ferramenta existente. Este método é acionado quando
+         * o usuário tenta excluir uma ferramenta na interface gráfica. Verifica se uma
+         * ferramenta foi selecionado na tabela antes de prosseguir com a exclusão.
+         * Exibe um diálogo de confirmação para garantir que o usuário deseja
+         * realmente excluir a ferramenta selecionado. Se o usuário confirmar a
+         * exclusão, a ferramenta é removido do banco de dados. Após a exclusão
+         * bem-sucedida, limpa os campos de texto e exibe uma mensagem de
+         * sucesso. Se ocorrer uma exceção, exibe uma mensagem de erro
+         * correspondente. Finalmente, recarrega a tabela de ferramentas para
+         * refletir as alterações realizadas.
+         */
         try {
 
-            // Variável para armazenar o ID do amigo a ser excluído
+            // Variável para armazenar o ID da ferramenta a ser excluído
             int id = 0;
 
-            // Verifica se um amigo foi selecionado na tabela para exclusão
+            // Verifica se uma ferramenta foi selecionado na tabela para exclusão
             if (this.jTableFerramenta.getSelectedRow() == -1) {
                 throw new Mensagem("Primeiro Selecione uma Ferramenta para Apagar");
             } else {
                 id = Integer.parseInt(this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 0).toString());
             }
 
-            // Exibe um diálogo de confirmação para garantir que o usuário deseja excluir o amigo selecionado
+            // Exibe um diálogo de confirmação para garantir que o usuário deseja excluir a ferramenta selecionado
             int respostaUsuario = JOptionPane.showConfirmDialog(null, "Tem certeza que deseja apagar essa Ferramenta?");
             if (respostaUsuario == 0) {
 
@@ -305,7 +293,7 @@ private Ferramenta objetoFerramenta;
                     JOptionPane.showMessageDialog(rootPane, "Esta Ferramenta possuí emprestimos vinculados, primeiro apague esses emprestimos para poder apagar a Ferramenta!");
                 } else {
 
-                    // Remove o amigo do banco de dados e exibe uma mensagem de sucesso
+                    // Remove a ferramenta do banco de dados e exibe uma mensagem de sucesso
                     if (this.objetoFerramenta.deleteFerramentaBD(id)) {
                         this.JTFNome.setText("");
                         this.JTFCusto.setText("");
@@ -314,7 +302,7 @@ private Ferramenta objetoFerramenta;
                     }
                 }
             }
-            // Imprime a lista atualizada de amigos no console (para fins de depuração)
+            // Imprime a lista atualizada de ferramentas no console (para fins de depuração)
             System.out.println(this.objetoFerramenta.getMinhaLista().toString());
         } catch (Mensagem erro) {
 
@@ -322,23 +310,23 @@ private Ferramenta objetoFerramenta;
             JOptionPane.showMessageDialog(null, erro.getMessage());
         } finally {
 
-            // Recarrega a tabela de amigos, independentemente de qualquer exceção ocorrida
+            // Recarrega a tabela de ferramenta, independentemente de qualquer exceção ocorrida
             carregaTabela();
         }
     }//GEN-LAST:event_JBApagarActionPerformed
 
     private void jTableFerramentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableFerramentaMouseClicked
         /**
-        * Atualiza os campos de texto com as informações do amigo selecionado
-        * na tabela. Este trecho de código é acionado quando o usuário
-        * seleciona um amigo na tabela. Verifica se algum amigo foi selecionado
-        * antes de prosseguir com a atualização dos campos de texto. Obtém o
-        * nome e o telefone do amigo selecionado na tabela e os define nos
-        * campos de texto correspondentes.
-        */
-        if (this.jTableFerramenta.getSelectedRow() != -1) {// Verifica se algum amigo foi selecionado na tabela
+         * Atualiza os campos de texto com as informações da ferramenta selecionado
+         * na tabela. Este trecho de código é acionado quando o usuário
+         * seleciona uma ferramenta na tabela. Verifica se alguma ferramenta foi selecionado
+         * antes de prosseguir com a atualização dos campos de texto. Obtém o
+         * nome e o telefone da ferramenta selecionado na tabela e os define nos
+         * campos de texto correspondentes.
+         */
+        if (this.jTableFerramenta.getSelectedRow() != -1) {// Verifica se alguma ferramenta foi selecionado na tabela
 
-            // Obtém o nome e o telefone do amigo selecionado na tabela
+            // Obtém o nome e o telefone da ferramenta selecionado na tabela
             String nome = this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 1).toString();
             String marca = this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 2).toString();
             String custo = this.jTableFerramenta.getValueAt(this.jTableFerramenta.getSelectedRow(), 3).toString();
@@ -350,15 +338,6 @@ private Ferramenta objetoFerramenta;
         }
     }//GEN-LAST:event_jTableFerramentaMouseClicked
 
-    private void JTFNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFNomeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFNomeActionPerformed
-
-    private void JTFMarcaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTFMarcaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTFMarcaActionPerformed
-
-    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton JBApagar;
