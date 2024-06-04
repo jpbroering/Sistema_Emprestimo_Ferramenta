@@ -13,10 +13,10 @@ import modelo.Ferramenta;
  * ferramentas no banco de dados.
  */
 public class FerramentaDAO extends BaseDAO {
-    
+
     private static ArrayList<Ferramenta> listaFerramenta = new ArrayList<>();
 
-   /**
+    /**
      * Retorna a lista de todas as ferramentas cadastradas no banco de dados.
      *
      * @return lista de objetos Ferramenta
@@ -43,8 +43,8 @@ public class FerramentaDAO extends BaseDAO {
         }
         return listaFerramenta;
     }
-    
-     /**
+
+    /**
      * Define a lista de ferramentas.
      *
      * @param listaFerramenta lista de objetos Ferramenta
@@ -52,15 +52,15 @@ public class FerramentaDAO extends BaseDAO {
     public void setMinhalista(ArrayList<Ferramenta> listaFerramenta) {
         FerramentaDAO.listaFerramenta = listaFerramenta;
     }
-    
-     /**
+
+    /**
      * Retorna o maior ID de ferramenta presente no banco de dados.
      *
      * @return o maior ID de ferramenta
      */
-    public int maiorID(){
+    public int maiorID() {
         int maiorID = 0;
-        try{
+        try {
             Statement stmt = this.getConexao().createStatement();
             ResultSet res = stmt.executeQuery("SELECT MAX(id_ferramenta) id FROM tb_ferramenta");
             res.next();
@@ -71,7 +71,7 @@ public class FerramentaDAO extends BaseDAO {
         }
         return maiorID;
     }
-    
+
     /**
      * Insere uma nova ferramenta no banco de dados.
      *
@@ -95,6 +95,19 @@ public class FerramentaDAO extends BaseDAO {
             throw new RuntimeException(erro);
         }
     }
+
+    /**
+     * Atualiza as informações de uma ferramenta no banco de dados.
+     *
+     * Este método recebe um objeto do tipo Ferramenta e atualiza seus dados
+     * (nome, marca e custo) na tabela `tb_Ferramenta` do banco de dados, com
+     * base no ID da ferramenta.
+     *
+     * @param objeto O objeto Ferramenta contendo as informações a serem
+     * atualizadas.
+     * @return true se a atualização foi bem-sucedida, false caso contrário.
+     * @throws RuntimeException se ocorrer um erro de SQL durante a operação.
+     */
     public boolean updateFerramentaBD(Ferramenta objeto) {
         String sql = "UPDATE tb_Ferramenta SET nome = ?, marca = ?, custo = ? WHERE id_Ferramenta = ?";
         try {
@@ -111,6 +124,17 @@ public class FerramentaDAO extends BaseDAO {
             throw new RuntimeException(erro);
         }
     }
+
+    /**
+     * Deleta uma ferramenta do banco de dados.
+     *
+     * Este método recebe um ID de ferramenta e remove o registro correspondente
+     * da tabela `tb_Ferramenta` no banco de dados.
+     *
+     * @param id O ID da ferramenta a ser removida.
+     * @return true se a remoção foi bem-sucedida, false caso contrário.
+     * @throws RuntimeException se ocorrer um erro de SQL durante a operação.
+     */
     public boolean deleteFerramentaBD(int id) {
         String sql = "DELETE FROM tb_Ferramenta WHERE id_Ferramenta = ?";
         try {
@@ -124,7 +148,20 @@ public class FerramentaDAO extends BaseDAO {
             throw new RuntimeException(erro);
         }
     }
-     public boolean verificaFerramenta(int idFerramenta) {
+
+    /**
+     * Verifica se uma ferramenta está associada a algum empréstimo no banco de
+     * dados.
+     *
+     * Este método recebe o ID de uma ferramenta e verifica se existe algum
+     * registro na tabela `tb_emprestimo` que associa essa ferramenta.
+     *
+     * @param idFerramenta O ID da ferramenta a ser verificada.
+     * @return true se a ferramenta está associada a pelo menos um empréstimo,
+     * false caso contrário.
+     * @throws RuntimeException se ocorrer um erro de SQL durante a operação.
+     */
+    public boolean verificaFerramenta(int idFerramenta) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_Ferramenta_id_Ferramenta = ?";
         try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
@@ -145,5 +182,5 @@ public class FerramentaDAO extends BaseDAO {
         return true;
 
     }
-    
+
 }
