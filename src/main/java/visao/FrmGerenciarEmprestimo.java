@@ -70,7 +70,7 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "id", "criação", "devoluçao", "id amigo", "id ferramenta"
+                "Id", "Criação", "Devoluçao", "Id amigo", "Id ferramenta"
             }
         ) {
             Class[] types = new Class [] {
@@ -95,13 +95,13 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(JTEmprestimo);
 
-        jLabel2.setText("criação:");
+        jLabel2.setText("Criação:");
 
-        jLabel3.setText("devolução");
+        jLabel3.setText("Devolução:");
 
-        jLabel4.setText("amigo:");
+        jLabel4.setText("Amigo:");
 
-        jLabel5.setText("ferramenta:");
+        jLabel5.setText("Ferramenta:");
 
         JFTFDataEmprestimo.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(new java.text.SimpleDateFormat("yyyy-MM-dd"))));
 
@@ -137,7 +137,7 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 52, Short.MAX_VALUE)
+                        .addGap(0, 50, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jLabel2)
@@ -155,7 +155,7 @@ public class FrmGerenciarEmprestimo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(JTFIdFerramenta)
                             .addComponent(JTFIdAmigo, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 53, Short.MAX_VALUE)))
+                        .addGap(0, 49, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)

@@ -60,7 +60,7 @@ public class FrmDevolucaoEmprestimo extends javax.swing.JFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "id", "criação", "devoluçao", "id amigo", "id ferramenta"
+                "Id", "Criação", "Devoluçao", "Id amigo", "Id ferramenta"
             }
         ) {
             Class[] types = new Class [] {
