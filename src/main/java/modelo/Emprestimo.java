@@ -236,4 +236,10 @@ public class Emprestimo {
             return ""; // Retorna uma string vazia se a data for nula.
         }
     }
+     public String identificaQtdEmprestimo () {
+        return dao.identificaQtdEmprestimo();
+    }
+    public String identificaSemDevolucao () {
+        return dao.identificaSemDevolucao();
+    }
 }
