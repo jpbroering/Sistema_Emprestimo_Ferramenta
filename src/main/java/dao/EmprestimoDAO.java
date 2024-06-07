@@ -193,4 +193,46 @@ public class EmprestimoDAO extends BaseDAO {
         }
         return true;
     }
+     public String identificaQtdEmprestimo () {
+        String sql = "SELECT a.nome, COUNT(e.id_emprestimo) AS total_emprestimos FROM tb_amigo a JOIN tb_emprestimo e ON a.id_amigo = e.tb_amigo_id_amigo GROUP BY a.id_amigo, a.nome ORDER BY total_emprestimos DESC LIMIT 1";
+        try{
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            try (ResultSet resultSet = stmt.executeQuery()) {
+                    // Processar os resultados
+                    if (resultSet.next()) {
+                        String nome = resultSet.getString("nome");
+                        int totalEmprestimos = resultSet.getInt("total_emprestimos");
+                        stmt.close();
+                        return nome+" fez mais emprestimos com um total de "+totalEmprestimos+"\n\n";
+                    } else {
+                        stmt.close();
+                        return null;
+                    }
+                }
+            
+        } catch(SQLException erro) {
+            System.out.println("Erro: "+erro);
+        }
+        return null;
+    }
+    
+    public String identificaSemDevolucao () {
+        String sql = "SELECT a.nome, COUNT(e.id_emprestimo) AS total_emprestimos FROM tb_amigo a JOIN tb_emprestimo e ON a.id_amigo = e.tb_amigo_id_amigo WHERE a.id_amigo NOT IN (SELECT e2.tb_amigo_id_amigo FROM tb_emprestimo e2 WHERE e2.data_devolucao IS NOT NULL) GROUP BY a.id_amigo, a.nome HAVING COUNT(e.id_emprestimo) > 0;";
+        String nome = "";
+        try{
+            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
+            try (ResultSet resultSet = stmt.executeQuery()) {
+                    // Processar os resultados
+                    while (resultSet.next()) {
+                        nome = nome+resultSet.getString("nome")+" não devolveu nenhuma ferramenta\n\n";
+                    }
+                    stmt.close();
+                    return nome;
+                }
+            
+        } catch(SQLException erro) {
+            System.out.println("Erro: "+erro);
+        }
+        return null;
+    }
 }
