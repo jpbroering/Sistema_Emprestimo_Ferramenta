@@ -30,7 +30,7 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
 
         jLabel2.setText("Marca:");
 
-        jLabel3.setText("Custo");
+        jLabel3.setText("Custo:");
 
         JBCadastrar.setText("Cadastrar");
         JBCadastrar.addActionListener(new java.awt.event.ActionListener() {

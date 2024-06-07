@@ -117,9 +117,9 @@ public class FrmGerenciaFerramenta extends javax.swing.JFrame {
 
         jLabel1.setText("Nome:");
 
-        jLabel2.setText("Custo");
+        jLabel2.setText("Custo:");
 
-        jLabel3.setText("Marca");
+        jLabel3.setText("Marca:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

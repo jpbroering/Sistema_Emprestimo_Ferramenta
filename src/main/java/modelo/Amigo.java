@@ -51,16 +51,6 @@ public class Amigo extends EstruturaBase {
     }
 
     /**
-     * Retorna uma representação em String do objeto Amigo.
-     *
-     * @return uma String contendo as informações do amigo
-     */
-    @Override
-    public String toString() {
-        return super.toString() + ", Telefone: " + telefone;
-    }
-
-    /**
      * Retorna uma lista de todos os amigos cadastrados.
      *
      * @return uma lista de objetos Amigo
@@ -111,21 +101,11 @@ public class Amigo extends EstruturaBase {
     }
 
     /**
-     * Busca um amigo no banco de dados pelo ID.
+     * Verifica se um usuário é amigo de acordo com o seu ID.
      *
-     * @param id o ID do amigo a ser buscado
-     * @return objeto Amigo se encontrado, caso contrário retorna null
+     * @param id O ID do usuário a ser verificado.
+     * @return true se o usuário é um amigo; false caso contrário.
      */
-    public Amigo carregaAmigoBD(int id) {
-        return dao.carregaAmigoBD(id);
-    }
-   
-    /**
- * Verifica se um usuário é amigo de acordo com o seu ID.
- * 
- * @param id O ID do usuário a ser verificado.
- * @return true se o usuário é um amigo; false caso contrário.
- */
     public boolean verificaAmigo(int id) {
         return dao.verificaAmigo(id);
     }

@@ -31,7 +31,7 @@ public class FerramentaDAO extends BaseDAO {
                 int id = res.getInt("id_ferramenta");
                 String nome = res.getString("nome");
                 String marca = res.getString("marca");
-                float custo = res.getInt("custo");
+                float custo = res.getFloat("custo");
 
                 Ferramenta objeto = new Ferramenta(id, nome, marca, custo);
                 listaFerramenta.add(objeto);

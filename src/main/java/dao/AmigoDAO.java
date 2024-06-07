@@ -134,33 +134,6 @@ public class AmigoDAO extends BaseDAO {
     }
 
     /**
-     * Busca um amigo no banco de dados pelo ID.
-     *
-     * @param id ID do amigo a ser buscado
-     * @return objeto Amigo se encontrado, caso contrário retorna null
-     */
-    public Amigo carregaAmigoBD(int id) {
-        String sql = "SELECT * FROM tb_amigo WHER"
-                + "E id_amigo = ?";
-        try {
-            PreparedStatement stmt = this.getConexao().prepareStatement(sql);
-            stmt.setInt(1, id);
-            ResultSet res = stmt.executeQuery();
-            if (res.next()) {
-                int amigoId = res.getInt("id_amigo");
-                String nome = res.getString("nome");
-                String telefone = res.getString("telefone");
-                stmt.close();
-                return new Amigo(amigoId, nome, telefone);
-            }
-        } catch (SQLException erro) {
-            System.out.println("Erro: " + erro);
-        }
-        return null;
-
-    }
-
-    /**
      * Verifica se existe algum empréstimo relacionado a um amigo específico.
      *
      * @param idAmigo ID do amigo a ser verificado
