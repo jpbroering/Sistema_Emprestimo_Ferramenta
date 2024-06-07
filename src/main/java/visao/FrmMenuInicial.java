@@ -106,6 +106,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JMRelatorio.add(JMRelátorioFerramenta);
 
         JMRelatorioEmprestimo.setText("Relátorio de Emprestimos");
+        JMRelatorioEmprestimo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JMRelatorioEmprestimoActionPerformed(evt);
+            }
+        });
         JMRelatorio.add(JMRelatorioEmprestimo);
 
         jMenuBar1.add(JMRelatorio);
@@ -149,7 +154,8 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMRegistraEmprestimoActionPerformed
 
     private void JMRelátorioFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMRelátorioFerramentaActionPerformed
-        // TODO add your handling code here:
+        FrmRelatorioFerramenta janela = new FrmRelatorioFerramenta();
+        janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMRelátorioFerramentaActionPerformed
 
     private void JMGerenciarEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarEmprestimoActionPerformed
@@ -200,6 +206,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         FrmDevolucaoEmprestimo janela = new FrmDevolucaoEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMDevEmprestimoActionPerformed
+
+    private void JMRelatorioEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMRelatorioEmprestimoActionPerformed
+        FrmRelatorioEmprestimo janela = new FrmRelatorioEmprestimo();
+        janela.setVisible(rootPaneCheckingEnabled);
+    }//GEN-LAST:event_JMRelatorioEmprestimoActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu JMCadastrar;
