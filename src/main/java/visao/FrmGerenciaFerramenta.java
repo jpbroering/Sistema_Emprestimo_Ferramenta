@@ -5,10 +5,18 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Ferramenta;
 
+/**
+ * Classe que gerencia a interface gráfica para gestão de ferramentas.
+ */
 public class FrmGerenciaFerramenta extends javax.swing.JFrame {
 
     private Ferramenta objetoFerramenta;
 
+    /**
+     * Construtor da classe FrmGerenciaFerramenta. Inicializa os componentes da
+     * janela e o objeto de ferramenta necessário para o gerenciamento. Carrega
+     * a tabela de ferramentas.
+     */
     public FrmGerenciaFerramenta() {
 
         initComponents();
@@ -188,18 +196,6 @@ public class FrmGerenciaFerramenta extends javax.swing.JFrame {
 
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
 
-        /**
-         * Método para atualizar uma ferramenta existente. Este método é
-         * acionado quando o usuário tenta atualizar as informações de uma
-         * ferramenta na interface gráfica. Verifica se o nome e o número de
-         * telefone são válidos. Selecione uma ferramenta na tabela antes de
-         * editar. Atualiza a ferramenta no banco de dados e limpa os campos de
-         * texto após a atualização bem-sucedida. Lança e trata exceções para
-         * erros específicos, como nome curto, número de telefone ausente ou
-         * seleção de ferramenta não realizada. Se ocorrer uma exceção, exibe
-         * uma mensagem de erro correspondente. Finalmente, recarrega a tabela
-         * de ferramentas para refletir as alterações realizadas.
-         */
         try {
             // Variáveis para armazenar os dados das ferramentas
             int id = 0;
