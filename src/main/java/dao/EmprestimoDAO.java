@@ -88,7 +88,7 @@ public class EmprestimoDAO extends BaseDAO {
             stmt.setInt(3, objeto.getIdFerramenta());
             stmt.setDate(4, objeto.getDataEmprestimo());
             stmt.setDate(5, objeto.getDataDevolucao());
-            
+
             stmt.execute();
             stmt.close();
             return true;
@@ -97,63 +97,65 @@ public class EmprestimoDAO extends BaseDAO {
             throw new RuntimeException(erro);
         }
     }
-    
+
     /**
      * Remove um empréstimo do banco de dados.
-     * 
+     *
      * @param idEmprestimo o ID do emprestimo a ser removido.
      * @return Verdadeiro se a remoção for bem-sucedida, falso caso contrário.
      */
     public boolean deleteEmprestimoBD(int idEmprestimo) {
-        try{
+        try {
             Statement stmt = this.getConexao().createStatement();
-            stmt.executeUpdate("DELETE FROM tb_emprestimo where id_emprestimo = "+idEmprestimo);
+            stmt.executeUpdate("DELETE FROM tb_emprestimo where id_emprestimo = " + idEmprestimo);
             stmt.close();
-        } catch(SQLException erro){
-            System.out.println("Erro: "+erro);
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
         }
         return true;
     }
-    
+
     /**
      * Atualiza o conteúdo de um emprestimo no banco de dados.
-     * 
+     *
      * @param objeto do tipo emprestimo.
-     * @return Verdadeiro se a atualização for bem-sucedida, falso caso contrário.
+     * @return Verdadeiro se a atualização for bem-sucedida, falso caso
+     * contrário.
      */
-    public  boolean updateEmprestimoBD(Emprestimo objeto){
+    public boolean updateEmprestimoBD(Emprestimo objeto) {
         String sql = "UPDATE tb_emprestimo set data_emprestimo = ?, data_devolucao = ?, tb_amigo_id_amigo = ?, tb_ferramenta_id_ferramenta = ? WHERE id_emprestimo = ?";
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setDate(1, objeto.getDataEmprestimo());
             stmt.setDate(2, objeto.getDataDevolucao());
             stmt.setInt(3, objeto.getIdAmigo());
             stmt.setInt(4, objeto.getIdFerramenta());
             stmt.setInt(5, objeto.getId());
-            
+
             stmt.execute();
             stmt.close();
-            
+
             return true;
-        } catch(SQLException erro){
-            System.out.println("Erro: "+erro);
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
             throw new RuntimeException(erro);
         }
     }
-    
+
     /**
      * Verifica se tem emprestimos pendentes vinculados a idFerramenta.
-     * 
+     *
      * @param idFerramenta o ID da ferramenta a ser verificada.
-     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso
+     * contrário.
      */
-    public boolean verificaFerramentaEmprestada (int idFerramenta) {
+    public boolean verificaFerramentaEmprestada(int idFerramenta) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_ferramenta_id_ferramenta = ? and data_devolucao is null";
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setInt(1, idFerramenta);
-            try(ResultSet res = stmt.executeQuery()){
-                if(res.next()){
+            try (ResultSet res = stmt.executeQuery()) {
+                if (res.next()) {
                     stmt.close();
                     return false;
                 } else {
@@ -161,25 +163,26 @@ public class EmprestimoDAO extends BaseDAO {
                     return true;
                 }
             }
-        } catch(SQLException erro) {
-            System.out.println("Erro: "+erro);
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
         }
         return true;
     }
-    
+
     /**
      * Verifica se tem emprestimos pendentes vinculados a idFerramenta.
-     * 
+     *
      * @param idAmigo o ID da ferramenta a ser verificada.
-     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso contrário.
+     * @return Verdadeiro se achar pelo menos um emprestimo pendente, falso caso
+     * contrário.
      */
-    public boolean verificaEmprestimoPendente (int idAmigo) {
+    public boolean verificaEmprestimoPendente(int idAmigo) {
         String sql = "SELECT * FROM tb_emprestimo WHERE tb_amigo_id_amigo = ? and data_devolucao is null";
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             stmt.setInt(1, idAmigo);
-            try(ResultSet res = stmt.executeQuery()){
-                if(res.next()){
+            try (ResultSet res = stmt.executeQuery()) {
+                if (res.next()) {
                     stmt.close();
                     return true;
                 } else {
@@ -187,51 +190,77 @@ public class EmprestimoDAO extends BaseDAO {
                     return false;
                 }
             }
-            
-        } catch(SQLException erro) {
-            System.out.println("Erro: "+erro);
+
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
         }
         return true;
     }
-     public String identificaQtdEmprestimo () {
+
+    /**
+     * Este método identifica o amigo que fez mais empréstimos.
+     *
+     * <p>
+     * Ele executa uma consulta SQL que conta o número de empréstimos feitos por
+     * cada amigo, ordena os resultados em ordem decrescente e retorna o nome do
+     * amigo com o maior número de empréstimos.
+     * </p>
+     *
+     * @return Uma string contendo o nome do amigo que fez mais empréstimos e o
+     * total de empréstimos, ou {@code null} se não houver resultados.
+     */
+    public String identificaQtdEmprestimo() {
         String sql = "SELECT a.nome, COUNT(e.id_emprestimo) AS total_emprestimos FROM tb_amigo a JOIN tb_emprestimo e ON a.id_amigo = e.tb_amigo_id_amigo GROUP BY a.id_amigo, a.nome ORDER BY total_emprestimos DESC LIMIT 1";
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             try (ResultSet resultSet = stmt.executeQuery()) {
-                    // Processar os resultados
-                    if (resultSet.next()) {
-                        String nome = resultSet.getString("nome");
-                        int totalEmprestimos = resultSet.getInt("total_emprestimos");
-                        stmt.close();
-                        return nome+" fez mais emprestimos com um total de "+totalEmprestimos+"\n\n";
-                    } else {
-                        stmt.close();
-                        return null;
-                    }
+                // Processar os resultados
+                if (resultSet.next()) {
+                    String nome = resultSet.getString("nome");
+                    int totalEmprestimos = resultSet.getInt("total_emprestimos");
+                    stmt.close();
+                    return nome + " fez mais emprestimos com um total de " + totalEmprestimos + "\n\n";
+                } else {
+                    stmt.close();
+                    return null;
                 }
-            
-        } catch(SQLException erro) {
-            System.out.println("Erro: "+erro);
+            }
+
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
         }
         return null;
     }
-    
-    public String identificaSemDevolucao () {
+
+    /**
+     * Este método identifica os amigos que não devolveram nenhuma ferramenta.
+     *
+     * <p>
+     * Ele executa uma consulta SQL que seleciona amigos que fizeram empréstimos
+     * mas não devolveram nenhuma ferramenta. A consulta conta o número de
+     * empréstimos não devolvidos para cada amigo e retorna uma lista de nomes
+     * desses amigos.
+     * </p>
+     *
+     * @return Uma string contendo os nomes dos amigos que não devolveram
+     * nenhuma ferramenta, ou {@code null} se não houver resultados.
+     */
+    public String identificaSemDevolucao() {
         String sql = "SELECT a.nome, COUNT(e.id_emprestimo) AS total_emprestimos FROM tb_amigo a JOIN tb_emprestimo e ON a.id_amigo = e.tb_amigo_id_amigo WHERE a.id_amigo NOT IN (SELECT e2.tb_amigo_id_amigo FROM tb_emprestimo e2 WHERE e2.data_devolucao IS NOT NULL) GROUP BY a.id_amigo, a.nome HAVING COUNT(e.id_emprestimo) > 0;";
         String nome = "";
-        try{
+        try {
             PreparedStatement stmt = this.getConexao().prepareStatement(sql);
             try (ResultSet resultSet = stmt.executeQuery()) {
-                    // Processar os resultados
-                    while (resultSet.next()) {
-                        nome = nome+resultSet.getString("nome")+" não devolveu nenhuma ferramenta\n\n";
-                    }
-                    stmt.close();
-                    return nome;
+                // Processar os resultados
+                while (resultSet.next()) {
+                    nome = nome + resultSet.getString("nome") + " não devolveu nenhuma ferramenta\n\n";
                 }
-            
-        } catch(SQLException erro) {
-            System.out.println("Erro: "+erro);
+                stmt.close();
+                return nome;
+            }
+
+        } catch (SQLException erro) {
+            System.out.println("Erro: " + erro);
         }
         return null;
     }

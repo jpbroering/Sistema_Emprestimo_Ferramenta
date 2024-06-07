@@ -152,13 +152,22 @@ public class FrmCadastroEmprestimo extends javax.swing.JFrame {
                 throw new Mensagem("O dia deve ter...");
             } else {
                 dataOrdenada = this.JTFdataDiaEmp.getText().split("/");
-                dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[0])-1900,Integer.parseInt(dataOrdenada[1])-1,Integer.parseInt(dataOrdenada[2]));
+                dataDiaEmp = new Date(Integer.parseInt(dataOrdenada[0]) - 1900, Integer.parseInt(dataOrdenada[1]) - 1, Integer.parseInt(dataOrdenada[2]));
             }
 
             // Insere o empréstimo no banco de dados e exibe uma mensagem de sucesso
             if (this.objetoEmprestimo.verificaEmprestimoPendente(idAmigo)) {
                 JOptionPane.showMessageDialog(rootPane, "Este amigo tem emprestimos não concluidos");
             }
+
+            /**
+             * Verifica a disponibilidade da ferramenta e cadastra o empréstimo
+             * se disponível.
+             *
+             * @param idFerramenta O ID da ferramenta.
+             * @param idAmigo O ID do amigo.
+             * @param dataDiaEmp A data do empréstimo.
+             */
             if (this.objetoEmprestimo.verificaFerramentaEmprestada(idFerramenta)) {
                 if (this.objetoEmprestimo.insertEmprestimoBD(idFerramenta, idAmigo, dataDiaEmp)) {
                     JOptionPane.showMessageDialog(rootPane, "Emprestimo cadastrada com Sucesso!");

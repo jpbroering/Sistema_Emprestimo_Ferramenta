@@ -4,7 +4,6 @@ import java.sql.Date;
 import dao.EmprestimoDAO;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 
 /**
  * Classe para representar um objeto de empréstimo.
@@ -221,13 +220,13 @@ public class Emprestimo {
     public boolean verificaFerramentaEmprestada(int idFerramenta) {
         return dao.verificaFerramentaEmprestada(idFerramenta);
     }
-    
+
     /**
-         * Transforma um objeto Date em uma string formatada.
-         *
-         * @param data Data a ser formatada.
-         * @return String formatada ou uma string vazia se a data for nula.
-         */
+     * Transforma um objeto Date em uma string formatada.
+     *
+     * @param data Data a ser formatada.
+     * @return String formatada ou uma string vazia se a data for nula.
+     */
     public String transformaData(Date data) {
         SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd"); // Define o formato da data.
         if (data != null) {
@@ -236,10 +235,24 @@ public class Emprestimo {
             return ""; // Retorna uma string vazia se a data for nula.
         }
     }
-     public String identificaQtdEmprestimo () {
+
+    /**
+     * Retorna o amigo que fez mais empréstimos.
+     *
+     * @return Nome do amigo e total de empréstimos, ou {@code null} se não
+     * houver resultados.
+     */
+    public String identificaQtdEmprestimo() {
         return dao.identificaQtdEmprestimo();
     }
-    public String identificaSemDevolucao () {
+
+    /**
+     * Retorna os amigos que não devolveram nenhuma ferramenta.
+     *
+     * @return Nomes dos amigos que não devolveram ferramentas, ou {@code null}
+     * se não houver resultados.
+     */
+    public String identificaSemDevolucao() {
         return dao.identificaSemDevolucao();
     }
 }

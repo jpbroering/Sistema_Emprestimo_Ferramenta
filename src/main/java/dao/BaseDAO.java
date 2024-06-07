@@ -5,9 +5,18 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class BaseDAO {
+
     /**
-     * Esse método é utilizado para conectar com o banco de dados
-     * @return connection;
+     * Este método é utilizado para conectar com o banco de dados.
+     *
+     * <p>
+     * Ele carrega o driver JDBC do MySQL, define a URL de conexão com base no
+     * servidor e no nome do banco de dados, e tenta estabelecer a conexão com
+     * as credenciais fornecidas.
+     * </p>
+     *
+     * @return A conexão estabelecida com o banco de dados, ou {@code null} se
+     * ocorrer um erro durante o processo de conexão.
      */
     public Connection getConexao() {
         Connection connection = null;
@@ -19,7 +28,7 @@ public class BaseDAO {
             String database = "bd_emprestimo";//colocar db
             String url = "jdbc:mysql://" + server + ":3306/" + database + "?useTimezone=true&serverTimezone=UTC";
             String user = "root";
-            String password = "Unisul@1520";
+            String password = "root";
 
             connection = DriverManager.getConnection(url, user, password);
 

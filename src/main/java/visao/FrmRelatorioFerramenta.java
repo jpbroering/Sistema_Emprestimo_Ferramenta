@@ -3,10 +3,17 @@ package visao;
 import java.util.ArrayList;
 import modelo.Ferramenta;
 
+/**
+ * Janela para exibição de relatório de ferramentas.
+ */
 public class FrmRelatorioFerramenta extends javax.swing.JFrame {
-    
+
     Ferramenta objetoFerramenta;
-    
+
+    /**
+     * Construtor da classe FrmRelatorioFerramenta. Inicializa os componentes da
+     * janela e o objeto de ferramenta necessário para o relatório.
+     */
     public FrmRelatorioFerramenta() {
         initComponents();
         objetoFerramenta = new Ferramenta();
@@ -73,16 +80,29 @@ public class FrmRelatorioFerramenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerarActionPerformed
+
+        /**
+         * Obtém a lista de ferramentas e gera um relatório com informações
+         * sobre elas.
+         */
         ArrayList<Ferramenta> listaFerramenta = new ArrayList<Ferramenta>();
         listaFerramenta = objetoFerramenta.getMinhaLista();
-        
+
+        // Cria uma string para o relatório
         String relatorio = "Relatorio\n\n";
+
+        // Inicializa uma variável para o custo total das ferramentas
         float total = 0;
-        for(Ferramenta f : listaFerramenta){
+
+        // Itera sobre a lista de ferramentas para criar o relatório
+        for (Ferramenta f : listaFerramenta) {
+            // Adiciona informações sobre cada ferramenta ao relatório
             total = total + f.getCusto();
-            relatorio = relatorio + f.getNome() + " da marca " + f.getMarca() + ": "+f.getCusto()+" R$\n\n";
+            relatorio = relatorio + f.getNome() + " da marca " + f.getMarca() + ": " + f.getCusto() + " R$\n\n";
         }
-        relatorio = relatorio + "Custo total: "+total+" R$";
+        // Adiciona o custo total ao relatório
+        relatorio = relatorio + "Custo total: " + total + " R$";
+        // Define o texto do JTextArea com o relatório gerado
         this.JTARelatorio.setText(relatorio);
     }//GEN-LAST:event_JBGerarActionPerformed
 

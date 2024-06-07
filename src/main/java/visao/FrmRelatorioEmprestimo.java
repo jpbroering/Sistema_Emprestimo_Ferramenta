@@ -5,6 +5,9 @@ import modelo.Amigo;
 import modelo.Emprestimo;
 import modelo.Ferramenta;
 
+/**
+ * Janela para exibição de relatório de empréstimos.
+ */
 public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
 
     Ferramenta objetoFerramenta;
@@ -14,6 +17,10 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
     ArrayList<Emprestimo> listaEmprestimo;
     ArrayList<Amigo> listaAmigo;
 
+    /**
+     * Construtor da classe FrmRelatorioEmprestimo. Inicializa os componentes da
+     * janela e os objetos necessários para o relatório.
+     */
     public FrmRelatorioEmprestimo() {
         initComponents();
         objetoFerramenta = new Ferramenta();
@@ -24,23 +31,29 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
         listaAmigo = new ArrayList<Amigo>();
     }
 
-    public String formataEmprestimo(Emprestimo e){
+    /**
+     * Formata um objeto de empréstimo para exibição no relatório.
+     *
+     * @param e O objeto de empréstimo a ser formatado.
+     * @return Uma string contendo as informações formatadas do empréstimo.
+     */
+    public String formataEmprestimo(Emprestimo e) {
         listaFerramenta = objetoFerramenta.getMinhaLista();
         listaAmigo = objetoAmigo.getMinhaLista();
         String relatorio = "";
-        for (Ferramenta f : listaFerramenta){
-            if(e.getIdFerramenta() == f.getId()){
-                relatorio = f.getNome()+" da marca "+f.getMarca()+" emprestada para ";
+        for (Ferramenta f : listaFerramenta) {
+            if (e.getIdFerramenta() == f.getId()) {
+                relatorio = f.getNome() + " da marca " + f.getMarca() + " emprestada para ";
             }
         }
         for (Amigo a : listaAmigo) {
-            if(e.getIdAmigo() == a.getId()){
-                relatorio = relatorio+a.getNome()+":\n"+e.getDataEmprestimo();
+            if (e.getIdAmigo() == a.getId()) {
+                relatorio = relatorio + a.getNome() + ":\n" + e.getDataEmprestimo();
             }
         }
         return relatorio;
     }
-    
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -106,25 +119,35 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerarActionPerformed
+
+        /**
+         * Obtém a lista de empréstimos e gera um relatório com informações
+         * sobre eles.
+         */
         listaEmprestimo = objetoEmprestimo.getMinhaLista();
 
+        // Cria strings para diferentes seções do relatório
         String concluido = "Empréstimo concluidos\n\n";
         String andamento = "Empréstimos em andamento\n\n";
         String relatorio = "Relatório\n\n";
-        String info = "Informações adicionais\nMais Emprestimos\n\n"+objetoEmprestimo.identificaQtdEmprestimo()+"Amigos sem devoluções\n\n"+objetoEmprestimo.identificaSemDevolucao();
+        String info = "Informações adicionais\nMais Emprestimos\n\n" + objetoEmprestimo.identificaQtdEmprestimo() + "Amigos sem devoluções\n\n" + objetoEmprestimo.identificaSemDevolucao();
         ArrayList<String> semDev = new ArrayList<String>();
-        
+
+        // Itera sobre a lista de empréstimos para criar o relatório
         for (Emprestimo e : listaEmprestimo) {
             if (e.getDataDevolucao() != null) {
-                concluido = concluido+formataEmprestimo(e)+" - "+e.getDataDevolucao()+"\n\n";
+                // Adiciona empréstimos concluídos ao relatório
+                concluido = concluido + formataEmprestimo(e) + " - " + e.getDataDevolucao() + "\n\n";
+                // Adiciona empréstimos em andamento ao relatório
             } else {
-                andamento = andamento+formataEmprestimo(e)+" - em andamento\n\n";
+                andamento = andamento + formataEmprestimo(e) + " - em andamento\n\n";
             }
         }
-        
-        
-        relatorio = relatorio+andamento+concluido+info;
-        
+
+// Concatena as seções do relatório
+        relatorio = relatorio + andamento + concluido + info;
+
+// Define o texto do JTextArea com o relatório gerado
         this.JTARelatorio.setText(relatorio);
     }//GEN-LAST:event_JBGerarActionPerformed
 

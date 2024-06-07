@@ -6,9 +6,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Emprestimo;
 
+/**
+ * Janela para realizar a devolução de empréstimos.
+ */
 public class FrmDevolucaoEmprestimo extends javax.swing.JFrame {
 
-    private Emprestimo objetoEmprestimo; // Objeto que representa um empréstimo.
+    private Emprestimo objetoEmprestimo;
 
     /**
      * Construtor da classe. Inicializa os componentes e carrega os dados na
@@ -24,16 +27,16 @@ public class FrmDevolucaoEmprestimo extends javax.swing.JFrame {
      * Carrega os dados de empréstimos na tabela.
      */
     public void carregaTabela() {
-        DefaultTableModel modelo = (DefaultTableModel) JTEmprestimo.getModel(); // Obtém o modelo da tabela.
-        modelo.setNumRows(0); // Limpa a tabela.
-        ArrayList<Emprestimo> listaEmprestimo = objetoEmprestimo.getMinhaLista(); // Obtém a lista de empréstimos.
+        DefaultTableModel modelo = (DefaultTableModel) JTEmprestimo.getModel();
+        modelo.setNumRows(0);
+        ArrayList<Emprestimo> listaEmprestimo = objetoEmprestimo.getMinhaLista();
         for (Emprestimo a : listaEmprestimo) {
             modelo.addRow(new Object[]{
-                a.getId(), // Adiciona o ID do empréstimo.
-                objetoEmprestimo.transformaData(a.getDataEmprestimo()), // Formata e adiciona a data de empréstimo.
-                objetoEmprestimo.transformaData(a.getDataDevolucao()), // Formata e adiciona a data de devolução.
-                a.getIdAmigo(), // Adiciona o ID do amigo.
-                a.getIdFerramenta() // Adiciona o ID da ferramenta.
+                a.getId(),
+                objetoEmprestimo.transformaData(a.getDataEmprestimo()),
+                objetoEmprestimo.transformaData(a.getDataDevolucao()),
+                a.getIdAmigo(),
+                a.getIdFerramenta()
             });
         }
     }

@@ -154,6 +154,14 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMRegistraEmprestimoActionPerformed
 
     private void JMRelátorioFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMRelátorioFerramentaActionPerformed
+
+        /**
+         * Cria uma nova instância da janela de relatório de ferramenta e a
+         * torna visível.
+         *
+         * @param rootPaneCheckingEnabled Indica se o mecanismo de validação do
+         * painel raiz está habilitado.
+         */
         FrmRelatorioFerramenta janela = new FrmRelatorioFerramenta();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMRelátorioFerramentaActionPerformed
@@ -169,6 +177,11 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMGerenciarEmprestimoActionPerformed
 
     private void JMGerenciarFerramentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarFerramentaActionPerformed
+
+        /**
+         * Cria uma nova instância da janela de gerenciamento de ferramenta e a
+         * torna visível.
+         */
         FrmGerenciaFerramenta janela = new FrmGerenciaFerramenta();
         janela.setVisible(true);
     }//GEN-LAST:event_JMGerenciarFerramentaActionPerformed
@@ -198,16 +211,40 @@ public class FrmMenuInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_JMFerramentaActionPerformed
 
     private void JMGerenciarAmigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMGerenciarAmigoActionPerformed
+
+        /**
+         * Cria uma nova instância da janela de gerenciamento de amigo e a torna
+         * visível.
+         *
+         * @param rootPaneCheckingEnabled Indica se o mecanismo de validação do
+         * painel raiz está habilitado.
+         */
         FrmGerenciaAmigo janela = new FrmGerenciaAmigo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMGerenciarAmigoActionPerformed
 
     private void JMDevEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMDevEmprestimoActionPerformed
+
+        /**
+         * Cria uma nova instância da janela de devolução de empréstimo e a
+         * torna visível.
+         *
+         * @param rootPaneCheckingEnabled Indica se o mecanismo de validação do
+         * painel raiz está habilitado.
+         */
         FrmDevolucaoEmprestimo janela = new FrmDevolucaoEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMDevEmprestimoActionPerformed
 
     private void JMRelatorioEmprestimoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JMRelatorioEmprestimoActionPerformed
+
+        /**
+         * Cria uma nova instância da janela de relatório de empréstimo e a
+         * torna visível.
+         *
+         * @param rootPaneCheckingEnabled Indica se o mecanismo de validação do
+         * painel raiz está habilitado.
+         */
         FrmRelatorioEmprestimo janela = new FrmRelatorioEmprestimo();
         janela.setVisible(rootPaneCheckingEnabled);
     }//GEN-LAST:event_JMRelatorioEmprestimoActionPerformed

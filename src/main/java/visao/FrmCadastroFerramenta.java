@@ -3,15 +3,25 @@ package visao;
 import javax.swing.JOptionPane;
 import modelo.Ferramenta;
 
+/**
+ * Janela de cadastro de ferramentas.
+ */
 public class FrmCadastroFerramenta extends javax.swing.JFrame {
 
+    /**
+     * Objeto que representa a ferramenta a ser cadastrada.
+     */
     private Ferramenta objetoFerramenta;
-    
+
+    /**
+     * Construtor da classe FrmCadastroFerramenta. Inicializa os componentes da
+     * janela e cria um novo objeto Ferramenta.
+     */
     public FrmCadastroFerramenta() {
         initComponents();
         this.objetoFerramenta = new Ferramenta();
     }
-    
+
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
@@ -97,35 +107,45 @@ public class FrmCadastroFerramenta extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void JBCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBCadastrarActionPerformed
-        try{
+        try {
             String nome;
             String marca;
             float custo;
-            if(JTFNome.getText().length() < 2){
+
+            // Verifica se o nome tem pelo menos 2 caracteres
+            if (JTFNome.getText().length() < 2) {
                 throw new Mensagem("Nome deve conter pelo menos 2 caracteres");
             } else {
                 nome = JTFNome.getText();
+
+                // Verifica se a marca tem pelo menos 2 caracteres
             }
-            if(JTFMarca.getText().length() < 2) {
+            if (JTFMarca.getText().length() < 2) {
                 throw new Mensagem("Marca deve conter pelo menos 2 caracteres");
             } else {
                 marca = JTFMarca.getText();
             }
-            if(JTFCusto.getText().length() < 0){
+
+            // Verifica se o custo é maior que 0
+            if (JTFCusto.getText().length() < 0) {
                 throw new Mensagem("Custo tem que ser um valor maior que 0");
             } else {
                 custo = Float.parseFloat(JTFCusto.getText());
             }
-            if(this.objetoFerramenta.insertFerramentaBD(nome, marca, custo)){
+
+            // Insere a ferramenta no banco de dados e exibe mensagem de sucesso   
+            if (this.objetoFerramenta.insertFerramentaBD(nome, marca, custo)) {
                 JOptionPane.showMessageDialog(rootPane, "Ferramenta Cadastrado com Sucesso!");
                 this.JTFNome.setText("");
                 this.JTFMarca.setText("");
                 this.JTFCusto.setText("");
             }
-        } catch(Mensagem erro) {
-            JOptionPane.showMessageDialog(null,erro.getMessage());
-        } catch(NumberFormatException erro2){
-            JOptionPane.showMessageDialog(null,"Imforme um número válido");
+        } catch (Mensagem erro) {
+            // Exibe mensagem de erro personalizada
+            JOptionPane.showMessageDialog(null, erro.getMessage());
+        } catch (NumberFormatException erro2) {
+            // Exibe mensagem de erro para formato de número inválido
+            JOptionPane.showMessageDialog(null, "Imforme um número válido");
         }
     }//GEN-LAST:event_JBCadastrarActionPerformed
 

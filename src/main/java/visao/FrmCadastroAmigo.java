@@ -8,6 +8,9 @@ import modelo.Amigo;
  */
 public class FrmCadastroAmigo extends javax.swing.JFrame {
 
+    /**
+     * Objeto que representa um amigo.
+     */
     private Amigo objetoAmigo;
 
     /**

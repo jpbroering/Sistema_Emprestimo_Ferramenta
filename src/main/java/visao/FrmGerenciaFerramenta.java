@@ -18,9 +18,9 @@ public class FrmGerenciaFerramenta extends javax.swing.JFrame {
     }
 
     /**
-     * Método para carregar os dados das Ferramentas na tabela. Obtém a referência ao
-     * modelo da tabela, limpa suas linhas e preenche com os dados das Ferramentas
-     * presentes na lista.
+     * Método para carregar os dados das Ferramentas na tabela. Obtém a
+     * referência ao modelo da tabela, limpa suas linhas e preenche com os dados
+     * das Ferramentas presentes na lista.
      */
     public void carregaTabela() {
 
@@ -189,16 +189,16 @@ public class FrmGerenciaFerramenta extends javax.swing.JFrame {
     private void JBEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBEditarActionPerformed
 
         /**
-         * Método para atualizar uma ferramenta existente. Este método é acionado
-         * quando o usuário tenta atualizar as informações de uma ferramenta na
-         * interface gráfica. Verifica se o nome e o número de telefone são
-         * válidos. Selecione uma ferramenta na tabela antes de editar. Atualiza a
-         * ferramenta no banco de dados e limpa os campos de texto após a atualização
-         * bem-sucedida. Lança e trata exceções para erros específicos, como
-         * nome curto, número de telefone ausente ou seleção de ferramenta não
-         * realizada. Se ocorrer uma exceção, exibe uma mensagem de erro
-         * correspondente. Finalmente, recarrega a tabela de ferramentas para
-         * refletir as alterações realizadas.
+         * Método para atualizar uma ferramenta existente. Este método é
+         * acionado quando o usuário tenta atualizar as informações de uma
+         * ferramenta na interface gráfica. Verifica se o nome e o número de
+         * telefone são válidos. Selecione uma ferramenta na tabela antes de
+         * editar. Atualiza a ferramenta no banco de dados e limpa os campos de
+         * texto após a atualização bem-sucedida. Lança e trata exceções para
+         * erros específicos, como nome curto, número de telefone ausente ou
+         * seleção de ferramenta não realizada. Se ocorrer uma exceção, exibe
+         * uma mensagem de erro correspondente. Finalmente, recarrega a tabela
+         * de ferramentas para refletir as alterações realizadas.
          */
         try {
             // Variáveis para armazenar os dados das ferramentas
@@ -220,6 +220,7 @@ public class FrmGerenciaFerramenta extends javax.swing.JFrame {
             } else {
                 marca = this.JTFMarca.getText();
             }
+            // Verifica se o custo é negativo
             if (Float.parseFloat(this.JTFCusto.getText()) < 0) {
                 throw new Mensagem(" Custo não pode ser negativo ");
             } else {
@@ -262,16 +263,17 @@ public class FrmGerenciaFerramenta extends javax.swing.JFrame {
     private void JBApagarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBApagarActionPerformed
 
         /**
-         * Método para excluir uma ferramenta existente. Este método é acionado quando
-         * o usuário tenta excluir uma ferramenta na interface gráfica. Verifica se uma
-         * ferramenta foi selecionado na tabela antes de prosseguir com a exclusão.
-         * Exibe um diálogo de confirmação para garantir que o usuário deseja
-         * realmente excluir a ferramenta selecionado. Se o usuário confirmar a
-         * exclusão, a ferramenta é removido do banco de dados. Após a exclusão
-         * bem-sucedida, limpa os campos de texto e exibe uma mensagem de
-         * sucesso. Se ocorrer uma exceção, exibe uma mensagem de erro
-         * correspondente. Finalmente, recarrega a tabela de ferramentas para
-         * refletir as alterações realizadas.
+         * Método para excluir uma ferramenta existente. Este método é acionado
+         * quando o usuário tenta excluir uma ferramenta na interface gráfica.
+         * Verifica se uma ferramenta foi selecionado na tabela antes de
+         * prosseguir com a exclusão. Exibe um diálogo de confirmação para
+         * garantir que o usuário deseja realmente excluir a ferramenta
+         * selecionado. Se o usuário confirmar a exclusão, a ferramenta é
+         * removido do banco de dados. Após a exclusão bem-sucedida, limpa os
+         * campos de texto e exibe uma mensagem de sucesso. Se ocorrer uma
+         * exceção, exibe uma mensagem de erro correspondente. Finalmente,
+         * recarrega a tabela de ferramentas para refletir as alterações
+         * realizadas.
          */
         try {
 
@@ -317,12 +319,12 @@ public class FrmGerenciaFerramenta extends javax.swing.JFrame {
 
     private void jTableFerramentaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableFerramentaMouseClicked
         /**
-         * Atualiza os campos de texto com as informações da ferramenta selecionado
-         * na tabela. Este trecho de código é acionado quando o usuário
-         * seleciona uma ferramenta na tabela. Verifica se alguma ferramenta foi selecionado
-         * antes de prosseguir com a atualização dos campos de texto. Obtém o
-         * nome e o telefone da ferramenta selecionado na tabela e os define nos
-         * campos de texto correspondentes.
+         * Atualiza os campos de texto com as informações da ferramenta
+         * selecionado na tabela. Este trecho de código é acionado quando o
+         * usuário seleciona uma ferramenta na tabela. Verifica se alguma
+         * ferramenta foi selecionado antes de prosseguir com a atualização dos
+         * campos de texto. Obtém o nome e o telefone da ferramenta selecionado
+         * na tabela e os define nos campos de texto correspondentes.
          */
         if (this.jTableFerramenta.getSelectedRow() != -1) {// Verifica se alguma ferramenta foi selecionado na tabela
 

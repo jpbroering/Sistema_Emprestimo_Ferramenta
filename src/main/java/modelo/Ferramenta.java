@@ -95,15 +95,40 @@ public class Ferramenta extends EstruturaBase {
         dao.insertFerramentaBD(objeto);
         return true;
     }
+
+    /**
+     * Deleta uma ferramenta do banco de dados.
+     *
+     * @param id O ID da ferramenta a ser deletada.
+     * @return {@code true} se a operação foi bem-sucedida.
+     */
     public boolean deleteFerramentaBD(int id) {
         dao.deleteFerramentaBD(id);
         return true;
     }
-    public boolean updateFerramentaBD(int id, String nome, String marca, float  custo) {
+
+    /**
+     * Atualiza os dados de uma ferramenta no banco de dados.
+     *
+     * @param id O ID da ferramenta a ser atualizada.
+     * @param nome O novo nome da ferramenta.
+     * @param marca A nova marca da ferramenta.
+     * @param custo O novo custo da ferramenta.
+     * @return {@code true} se a operação foi bem-sucedida.
+     */
+    public boolean updateFerramentaBD(int id, String nome, String marca, float custo) {
         Ferramenta objeto = new Ferramenta(id, nome, marca, custo);
         dao.updateFerramentaBD(objeto);
         return true;
     }
+
+    /**
+     * Verifica se uma ferramenta existe no banco de dados.
+     *
+     * @param id O ID da ferramenta a ser verificada.
+     * @return {@code true} se a ferramenta existe, {@code false} caso
+     * contrário.
+     */
     public boolean verificaFerramenta(int id) {
         return dao.verificaFerramenta(id);
     }
