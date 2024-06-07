@@ -13,9 +13,9 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
     Ferramenta objetoFerramenta;
     Emprestimo objetoEmprestimo;
     Amigo objetoAmigo;
-    ArrayList<Ferramenta> listaFerramenta;
-    ArrayList<Emprestimo> listaEmprestimo;
-    ArrayList<Amigo> listaAmigo;
+    ArrayList<Ferramenta> listaFerramenta = new ArrayList<Ferramenta>();
+    ArrayList<Emprestimo> listaEmprestimo = new ArrayList<Emprestimo>();
+    ArrayList<Amigo> listaAmigo = new ArrayList<Amigo>();
 
     /**
      * Construtor da classe FrmRelatorioEmprestimo. Inicializa os componentes da
@@ -26,9 +26,9 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
         objetoFerramenta = new Ferramenta();
         objetoEmprestimo = new Emprestimo();
         objetoAmigo = new Amigo();
-        listaFerramenta = new ArrayList<Ferramenta>();
-        listaEmprestimo = new ArrayList<Emprestimo>();
-        listaAmigo = new ArrayList<Amigo>();
+        listaFerramenta = objetoFerramenta.getMinhaLista();
+        listaEmprestimo = objetoEmprestimo.getMinhaLista();
+        listaAmigo = objetoAmigo.getMinhaLista();
     }
 
     /**
@@ -38,8 +38,6 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
      * @return Uma string contendo as informações formatadas do empréstimo.
      */
     public String formataEmprestimo(Emprestimo e) {
-        listaFerramenta = objetoFerramenta.getMinhaLista();
-        listaAmigo = objetoAmigo.getMinhaLista();
         String relatorio = "";
         for (Ferramenta f : listaFerramenta) {
             if (e.getIdFerramenta() == f.getId()) {
@@ -119,12 +117,6 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
     }//GEN-LAST:event_JBCancelarActionPerformed
 
     private void JBGerarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JBGerarActionPerformed
-
-        /**
-         * Obtém a lista de empréstimos e gera um relatório com informações
-         * sobre eles.
-         */
-        listaEmprestimo = objetoEmprestimo.getMinhaLista();
 
         // Cria strings para diferentes seções do relatório
         String concluido = "Empréstimo concluidos\n\n";
