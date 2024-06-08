@@ -123,8 +123,7 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
         String andamento = "Empréstimos em andamento\n\n";
         String relatorio = "Relatório\n\n";
         String info = "Informações adicionais\nMais Emprestimos\n\n" + objetoEmprestimo.identificaQtdEmprestimo() + "Amigos sem devoluções\n\n" + objetoEmprestimo.identificaSemDevolucao();
-        ArrayList<String> semDev = new ArrayList<String>();
-
+        
         // Itera sobre a lista de empréstimos para criar o relatório
         for (Emprestimo e : listaEmprestimo) {
             if (e.getDataDevolucao() != null) {
