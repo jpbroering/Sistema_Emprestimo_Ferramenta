@@ -213,7 +213,7 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
             }
 
             // Verifica se o número de telefone contém o DDD
-            if (this.JTFTelefone.getText().length() < 1) {
+            if (this.JTFTelefone.getText().length() != 11) {
                 throw new Mensagem(" O número de telefone deve conter o DDD");
             } else {
                 telefone = this.JTFTelefone.getText();
