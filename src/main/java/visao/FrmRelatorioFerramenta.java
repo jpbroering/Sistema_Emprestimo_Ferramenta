@@ -29,7 +29,7 @@ public class FrmRelatorioFerramenta extends javax.swing.JFrame {
         JBGerar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Relatório de empréstimo");
+        setTitle("Relatório de ferramenta");
 
         JTARelatorio.setColumns(20);
         JTARelatorio.setRows(5);
