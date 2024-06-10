@@ -33,7 +33,8 @@ public class FrmCadastroAmigo extends javax.swing.JFrame {
         JBCancelar = new javax.swing.JButton();
         JBCadastrar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Cadastro de Amigo");
 
         jLabel1.setText("Nome:");
 

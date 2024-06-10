@@ -64,7 +64,8 @@ public class FrmGerenciaAmigo extends javax.swing.JFrame {
         JBEditar = new javax.swing.JButton();
         JBApagar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciamento de amigo");
 
         jTableAmigo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

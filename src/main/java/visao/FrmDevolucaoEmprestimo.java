@@ -53,7 +53,8 @@ public class FrmDevolucaoEmprestimo extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         JLId = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Devolução de emprestimo");
 
         JTEmprestimo.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {

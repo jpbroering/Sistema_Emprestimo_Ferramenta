@@ -61,7 +61,8 @@ public class FrmRelatorioEmprestimo extends javax.swing.JFrame {
         JBCancelar = new javax.swing.JButton();
         JBGerar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Relatório de empréstimo");
 
         JTARelatorio.setColumns(20);
         JTARelatorio.setRows(5);

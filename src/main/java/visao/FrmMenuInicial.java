@@ -33,6 +33,7 @@ public class FrmMenuInicial extends javax.swing.JFrame {
         JMDevEmprestimo = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tela Inicial");
 
         JMCadastrar.setText("Cadastrar");
         JMCadastrar.addActionListener(new java.awt.event.ActionListener() {
