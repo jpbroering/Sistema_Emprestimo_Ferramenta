@@ -1,7 +1,7 @@
 # Sistema de emprestimo de ferramentas
 Este repositório se refere a A3 de soluções computacionais, cujo o sistema gerencia emprestimos de ferramentas
 
-## :construction_worker: Equiope
+## :construction_worker: Equipe
 - João Paulo Broering
 - Lucas Feldman
 - Gustavo Henrique de Simas Rosa
